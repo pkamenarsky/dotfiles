@@ -1,0 +1,411 @@
+#!/bin/sh
+
+CLJS_LIB=$CLOJURESCRIPT_HOME/lib/
+CLJS_LIB_JARS=$CLOJURESCRIPT_HOME/lib/*
+CLJS_SRC=$CLOJURESCRIPT_HOME/src/clj
+CLJS_CLJS=$CLOJURESCRIPT_HOME/src/cljs
+LOCAL_LIB_JARS=lib/*
+LOCAL_LIB=lib/
+LOCAL_MACROS=cljs-macros/
+
+java -server -cp "${CLJS_LIB}:${CLJS_LIB_JARS}:${CLJS_SRC}:${CLJS_CLJS}:${LOCAL_LIB}:${LOCAL_LIB_JARS}:${LOCAL_MACROS}" clojure.main -e \
+"
+(require '[clojure.java.io :as io])
+(require '[cljs.closure :as cljsc])
+ 
+ ;;wrap everything in a do to prevent the ouput, as a file
+;;this is unnecessary, but from clojure.main -e it makes a 
+;;difference
+(do
+  
+  ;; ripped almost directly from watchtower
+  (def ^{:dynamic true} *last-pass* nil)
+  
+  ;;*****************************************************
+  ;; Watcher map creation 
+  ;;*****************************************************
+  
+  (defn watcher* 
+    \"Create a watcher map that can later be passed to (watch)\"
+    [dirs]
+    (let [dirs (if (string? dirs)
+                 [dirs]
+                 dirs)]  
+      {:dirs dirs
+       :filters []}))
+  
+  (defn file-filter 
+    \"Add a filter to a watcher. A filter is just a function that takes in a
+  java.io.File and returns truthy about whether or not it should be included.\"
+    [w filt]
+    (update-in w [:filters] conj filt))
+  
+  (defn rate 
+    \"Set the rate of polling.\"
+    [w r]
+    (assoc w :rate r))
+  
+  (defn on-change 
+    \"When files are changed, execute a function that takes in a seq of the changed
+  file objects.\"
+    [w func]
+    (update-in w [:on-change] conj func))
+  
+  ;;*****************************************************
+;; Watcher execution  
+  ;;*****************************************************
+  
+  (defn default-filter [f] 
+    (.isFile f))
+  
+  (defn modified? [f]
+    (> (.lastModified f) @*last-pass*))
+  
+  (defn get-files [dirs filters]
+    (apply merge
+           (for [d dirs]
+             (let [dir-files (-> d io/file file-seq)]
+               {d (filter filters dir-files)}))))
+
+  (defn mapvals- [remove? f m]
+    (into {} 
+          (map (fn [[k v]]
+                 (let [r (f v)]
+                   (if-not (remove? r)
+                     [k r])))
+               m)))
+  
+  (defn make-final-filter [filters]
+    #(every? (fn [func] (func %)) 
+             (conj filters default-filter)))
+  
+  (defn updated?-fn [dirs filters]
+    (let [filters (conj filters default-filter)
+          final-filter #(every? (fn [func] (func %)) filters)]
+      (fn []
+        (let [fileset (get-files dirs final-filter)
+              results (mapvals- nil?
+                                #(seq (doall (filter modified? %)))
+                                fileset)
+              results (if-not (empty? results) results) 
+              ]
+          (when results 
+            (reset! *last-pass* (System/currentTimeMillis)))
+          results))))
+
+  (defn changed-fn [funcs]
+    (fn [files]
+      (doseq [f funcs]
+        (f files))))
+  
+  (defn compile-watcher [{:keys [filters rate dirs on-change]}]
+    {:rate rate
+     :updated? (updated?-fn dirs filters)
+     :changed (changed-fn on-change)})
+  
+  (defn watch 
+    \"Execute a watcher map\"
+    [w]
+    (let [{:keys [updated? rate changed]} (compile-watcher w)]
+      (binding [*last-pass* (atom 0)]
+        (while true
+          (Thread/sleep rate)
+          (when-let [changes (updated?)] 
+            (changed changes))))))
+  
+  (defmacro watcher 
+    \"Create a watcher for the given dirs (either a string or coll of strings), applying
+  the given transformations.
+
+  Transformations available: (rate) (file-filter) (on-change)\"
+    [dirs & body]
+    \`(let [w# (-> ~dirs
+                (watcher*)
+                ~@body)]
+       (future (watch w#))))
+  
+  ;;*****************************************************
+  ;; file filters
+;;*****************************************************
+  
+  (defn ignore-dotfiles 
+    \"A file-filter that removes any file that starts with a dot.\"
+    [f]
+    (not= \. (first (.getName f))))
+  
+  (defn extensions 
+  \"Create a file-filter for the given extensions.\"
+  [& exts]
+  (let [exts-set (set (map name exts))]
+    (fn [f]
+      (let [fname (.getName f)
+            cur (subs fname (inc (.lastIndexOf fname \".\")))]
+        (exts-set cur)))))
+  
+  ;; END ripped directly from watchtower
+  
+  
+;; ansi codes and printing
+  (def ANSI-CODES
+    {:reset \"[0m\"
+     :default \"[39m\"
+     :white   \"[37m\"
+     :black   \"[30m\"
+     :red     \"[31m\"
+     :green   \"[32m\"
+     :blue    \"[34m\"
+     :yellow  \"[33m\"
+     :magenta \"[35m\"
+     :cyan    \"[36m\"
+     })
+
+(defn ansi
+  [code]
+  (str \u001b (get ANSI-CODES code (:reset ANSI-CODES))))
+
+  (defn style
+    [s & codes]
+    (str (apply str (map ansi codes)) s (ansi :reset)))
+  
+  (import '[java.util Calendar])
+  (import '[java.text SimpleDateFormat])
+  (defn text-timestamp []
+    (let [c (Calendar/getInstance)
+          f (SimpleDateFormat. \"HH:mm:ss\")]
+      (.format f (.getTime c))))
+  
+  (defn watcher-print [& text]
+    (print (style (str (text-timestamp) \" :: watcher :: \") :magenta))
+    (apply print text)
+    (flush))
+  
+  (defn status-print [text]
+    (print \"    \" (style text :green) \"\n\")
+    (flush))
+
+  
+  (defn make-path-tester [path-seg]
+    (let [seg-match (str java.io.File/separatorChar
+                         path-seg
+                         java.io.File/separatorChar)]
+      (fn [fname]
+        (not= -1 (.indexOf fname seg-match)))))
+  
+  (def dialect-specific-file? 
+    (make-path-tester \"x\"))
+  
+  (def cljs-macro-file? 
+    (make-path-tester \"macros\"))
+
+  (defn file-ext [fname]
+    (subs fname (inc (.lastIndexOf fname \".\"))))
+  
+  
+
+  (defn rm-r [fname]
+    (let [f (io/file fname)]
+      (if (.exists f)
+        (do
+          (if (.isDirectory f)
+            (doseq [f (.listFiles f)]
+              (rm-r f)))
+          (io/delete-file f)))))
+  
+  (defn read-if-exists [fname]
+    (try
+      (read-string (slurp fname))
+      (catch Exception e nil)))
+  
+  (defn copy-to [dest-dir file fname]
+    (let [new-file (io/file (str dest-dir fname))
+          new-dir  (io/file (.getParent new-file))]
+      (.mkdirs new-dir)
+      (io/copy file new-file)))
+  
+  (defn copy-with-ext [dest-dir file fname ext]
+    (let [new-fname (str (subs fname 0 (inc (.lastIndexOf fname \".\"))) ext)
+          new-file (io/file (str dest-dir new-fname))
+          new-dir  (io/file (.getParent new-file))
+          ]
+      (.mkdirs new-dir)
+      (io/copy file new-file)))
+              
+  (defn copy-files [src-dir dest-dir files-updated create-file-types]
+    (let [c (count src-dir)]
+      (doseq [f files-updated]
+        (let [fname (subs (.getPath f) c)
+              ext   (file-ext fname)]
+          (cond
+            ; jvm or clr specific
+            (= \"clj\" ext)   
+            (when (some #{:clj} create-file-types)
+              (copy-to dest-dir f fname))
+           
+            ; generic clojure
+            (= \"cljg\" ext)
+            (do
+              (when (some #{:clj} create-file-types)
+                (copy-with-ext dest-dir f fname \"clj\"))
+              
+              (when (some #{:cljs} create-file-types)
+                (copy-with-ext dest-dir f fname \"cljs\"))
+              )
+            
+            ; generic macros
+            (= \"cljgm\" ext) 
+            (when (some #{:cljs :clj} create-file-types)
+              (copy-with-ext dest-dir f fname \"clj\"))
+            
+            ; clojurescript
+            (= \"cljs\" ext)
+            (when (some #{:cljs} create-file-types)
+              (copy-to dest-dir f fname))
+            
+            ;:else
+            ; Warning
+            )))))
+  
+  
+  (defn copy-changes [dest-dir change-map create-file-types]
+    (dorun
+      (map (fn [[src-dir files-changed]]
+             (copy-files src-dir dest-dir files-changed create-file-types))
+           change-map)))
+  
+  (defn create-project-src [gen-dir change-map]
+    (do 
+      (watcher-print (str \"Copying to \" gen-dir \" ...\"))
+      (copy-changes gen-dir change-map [:cljs :clj])
+      (status-print \"done.\"))
+      )
+  
+  (defn compile-cljs [src-dir opts]
+    (try
+      (cljsc/build src-dir opts)
+      (catch Throwable e
+        (.printStackTrace e))))
+  
+  (defn cljs-build [cljs-opts staging-dir change-map]
+    (do
+      (watcher-print \"Staging updated files...\")
+      (copy-changes staging-dir change-map [:cljs])
+      (status-print \"compiling...\")
+      (compile-cljs staging-dir cljs-opts)      
+      (status-print \"done.\")
+      ))
+
+  (defn checkout-dirs [checkouts-dir]
+    (map #(.getPath %)
+         (filter #(.isDirectory %)
+                 (.listFiles (io/file checkouts-dir)))))
+  
+  (defn sub-dir [root-dir sub-dir-path]
+    (str root-dir java.io.File/separatorChar sub-dir-path))
+  
+  (defn sub-dirs [root-dir sub-dir-paths]
+    (map (partial sub-dir root-dir) sub-dir-paths))
+  
+  (defn find-project-src-dirs [src-dir-paths checkouts-path project-root]
+    (let [my-src-dirs      (sub-dirs project-root src-dir-paths)
+          my-checkouts-dir (sub-dir project-root checkouts-path)
+          my-checkouts     (checkout-dirs my-checkouts-dir)
+          ]
+      (concat my-src-dirs 
+              (mapcat (partial find-project-src-dirs src-dir-paths checkouts-path)
+                      my-checkouts))))
+  
+  (defn project-src-dirs [src-dir-paths checkouts-path project-root]
+    (let [pds (find-project-src-dirs src-dir-paths checkouts-path project-root)]
+      (seq (set (map #(.getCanonicalPath (io/file %)) pds)))))
+  
+  (defn find-project-dirs [project-root checkouts-path]
+    (cons project-root 
+          (let [my-checkouts-dir (sub-dir project-root checkouts-path)
+                my-checkouts     (checkout-dirs my-checkouts-dir)]
+            (mapcat #(find-project-dirs % checkouts-path) my-checkouts))))
+  
+  (defn project-dirs [project-root checkouts-path]
+    (let [pds (find-project-dirs project-root checkouts-path)]
+      (seq (set (map #(.getCanonicalPath (io/file %)) pds)))))
+                
+  (defn main[]
+    (let [default-opts {:optimizations :simple
+                        :pretty-print true
+                        :output-dir \"resources/public/cljs/\"
+                        :output-to  \"resources/public/cljs/bootstrap.js\"}
+          fopts (read-if-exists \"cljs-opts.clj\")
+          opts (merge default-opts fopts)
+          
+          action (first *command-line-args*)
+          
+          src           \"src\"
+          src-generic   \"src-generic\"
+          src-generated \"src-generated\" 
+          checkouts     \"checkouts\"
+          staging       \"cljs-staging\"
+          
+          ]
+      
+      
+      (cond 
+        (= action \"gen-once\")
+        (do
+          (status-print (str \"Generating jarable src in \" src-generated))
+          (watcher-print (str \"Removing old \" src-generated))
+          (rm-r src-generated)
+          (status-print \"removed.\")
+          (let [files (get-files [src-generic]
+                                 (make-final-filter
+                                   [ignore-dotfiles ;; add a filter for the files we care about
+                                    (extensions :clj :cljs :cljg :cljgm) ;; filter by extensions
+                                    ]))]
+            ;(println files)
+            (create-project-src src-generated files)
+            )
+          )
+        
+        (= action \"gen-watch\")
+        (let [p-dirs (project-dirs \".\" checkouts)]
+          (status-print (str \"Will watch to gen-src for:\" project-dirs))
+          (doseq [p p-dirs]
+            (let [p-src-generated (sub-dir p src-generated)
+                  p-src-generic   (sub-dir p src-generic)
+                  ]
+              (when (.exists (io/file p-src-generic))
+                (watcher-print (str \"Removing old src-generated...: \" p-src-generated))
+                (rm-r p-src-generated)
+                (status-print \"removed.\")
+                (watcher [p-src-generic]
+                         (rate 50) ;; poll every 50ms
+                         (file-filter ignore-dotfiles) ;; add a filter for the files we care about
+                         (file-filter (extensions :clj :cljs :cljg :cljgm)) ;; filter by extensions
+                         
+                         (on-change 
+                           (partial create-project-src p-src-generated)
+                           ))))))
+        
+        (= action \"cljsc\")
+        (do
+          (status-print \"Will watch to compile cljs...\")
+          (watcher-print \"Removing old staging...\")
+          (rm-r staging)
+          (status-print \"removed.\")
+          (watcher (project-src-dirs [src src-generic] checkouts \".\")
+                   (rate 50) ;; poll every 50ms
+                   (file-filter ignore-dotfiles) ;; add a filter for the files we care about
+                   (file-filter (extensions :cljs :cljg :cljgm)) ;; filter by extensions
+                   (on-change (partial cljs-build opts staging))))
+        
+        :default
+        (println \"valid actions: cljsc, gen-once, gen-watch\")
+        )
+      ))
+  
+  (main)
+  )
+
+" "" $* 2> /dev/null
+
+# There seems to be no way to make clojure run a script and exit
+# you have to either start a repl or provide a file script.
+# here, to force exit an unfindable file is used and the error supressed.

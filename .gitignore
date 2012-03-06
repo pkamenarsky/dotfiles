@@ -1,0 +1,21 @@
+*
+!.gitignore
+
+!.profile
+
+!.vimrc
+!.vim
+
+!bin
+!bin/*
+bin/.DS_Store
+
+!makeapp.sh
+!get-shit-done
+
+!Library/
+!Library/Application Support/
+!Library/Application Support/Quicksilver/
+
+!Library/Preferences/
+

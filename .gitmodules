@@ -1,0 +1,36 @@
+[submodule ".vim/bundle/snipmate.vim"]
+	path = .vim/bundle/snipmate.vim
+	url = https://github.com/msanders/snipmate.vim.git
+[submodule ".vim/bundle/vim-snipmate"]
+	path = .vim/bundle/vim-snipmate
+	url = git://github.com/garbas/vim-snipmate.git
+[submodule ".vim/bundle/tlib_vim"]
+	path = .vim/bundle/tlib_vim
+	url = https://github.com/tomtom/tlib_vim.git
+[submodule ".vim/bundle/vim-addon-mw-utils"]
+	path = .vim/bundle/vim-addon-mw-utils
+	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
+[submodule ".vim/bundle/snipmate-snippets"]
+	path = .vim/bundle/snipmate-snippets
+	url = https://github.com/honza/snipmate-snippets.git
+[submodule ".vim/bundle/command-t"]
+	path = .vim/bundle/command-t
+	url = git://git.wincent.com/command-t.git
+[submodule ".vim/bundle/paredit.vim"]
+	path = .vim/bundle/paredit.vim
+	url = https://github.com/emezeske/paredit.vim.git
+[submodule ".vim/bundle/jellybeans.vim"]
+	path = .vim/bundle/jellybeans.vim
+	url = git@github.com:pkamenarsky/jellybeans.vim.git
+[submodule ".vim/bundle/vim-markdown-preview"]
+	path = .vim/bundle/vim-markdown-preview
+	url = https://github.com/henrik/vim-markdown-preview
+[submodule ".vim/bundle/vimclojure-2"]
+	path = .vim/bundle/vimclojure-2
+	url = https://github.com/vim-scripts/VimClojure
+[submodule ".vim/bundle/vimerl"]
+	path = .vim/bundle/vimerl
+	url = https://github.com/jimenezrick/vimerl
+[submodule ".vim/bundle/yankring"]
+	path = .vim/bundle/yankring
+	url = https://github.com/vim-scripts/YankRing.vim

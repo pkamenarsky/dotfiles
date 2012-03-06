@@ -1,0 +1,2 @@
+export ENCFS6_CONFIG="/Users/phil/Documents/encfs/key.xml"
+encfs ~/Dropbox/Vault ~/Documents/Vault --extpass="cat ~/Documents/encfs/pass"
