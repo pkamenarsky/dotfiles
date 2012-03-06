@@ -11,6 +11,7 @@ set smartcase
 set ignorecase
 set backspace=indent,eol,start
 set guioptions-=T
+set guioptions-=r
 set linebreak
 set tabstop=4
 set shiftwidth=4

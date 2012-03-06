@@ -78,6 +78,23 @@
 		</dict>
 		<dict>
 			<key>ID</key>
+			<string>4BD0BA65-1666-4609-95C2-76B189F339EA</string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>FileOpenAction</string>
+				<key>directID</key>
+				<string>/Users/phil/Downloads/our idiot brother 720p.nzb</string>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>onPress</key>
+			<true/>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
 			<string>QSiTunesNextSongTrigger</string>
 			<key>defaults</key>
 			<dict>
