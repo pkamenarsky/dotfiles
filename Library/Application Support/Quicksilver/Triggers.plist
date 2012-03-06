@@ -442,6 +442,27 @@
 		</dict>
 		<dict>
 			<key>ID</key>
+			<string>B50C522A-F4D0-4E29-8E30-FDE735F45BE0</string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>FileOpenAction</string>
+				<key>directID</key>
+				<string>/System/Library/CoreServices/Finder.app</string>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>118</integer>
+			<key>modifiers</key>
+			<integer>9437448</integer>
+			<key>onPress</key>
+			<true/>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
 			<string>QSiTunesStopTrigger</string>
 			<key>command</key>
 			<string>QSiTunesStopCommand</string>
