@@ -13,9 +13,6 @@
 [submodule ".vim/bundle/snipmate-snippets"]
 	path = .vim/bundle/snipmate-snippets
 	url = https://github.com/honza/snipmate-snippets.git
-[submodule ".vim/bundle/command-t"]
-	path = .vim/bundle/command-t
-	url = git://git.wincent.com/command-t.git
 [submodule ".vim/bundle/paredit.vim"]
 	path = .vim/bundle/paredit.vim
 	url = https://github.com/emezeske/paredit.vim.git
