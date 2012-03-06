@@ -1,4 +1,5 @@
-TERM=xterm-256color
+export CLICOLOR=1
+export TERM="xterm-256color"
 
 export CLOJURE_HOME=$HOME/Projects/clojure/
 export PATH=$CLOJURE_HOME:$PATH
