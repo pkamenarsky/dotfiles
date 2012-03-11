@@ -1,3 +1,8 @@
+loadplugins
+
+set fbpath="~/Dropbox/Documents"
+set fbwebloc
+
 noremap ; :
-inoremap ; :
+" inoremap ; :
 
