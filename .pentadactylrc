@@ -6,3 +6,4 @@ set fbwebloc
 noremap ; :
 " inoremap ; :
 
+noremap <M-d> :fbmark 
