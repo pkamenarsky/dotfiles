@@ -8,6 +8,8 @@
 
 !.pentadactyl/
 !.pentadactyl/plugins
+!.pentadactyl/styles
+!.pentadactyl/styles/*
 !.pentadactylrc
 
 !bin

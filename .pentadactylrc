@@ -12,3 +12,7 @@ set fbpath="~/Dropbox/Documents"
 set fbwebloc
 
 noremap <M-d> :fbmark 
+
+" HN style
+so ~/.pentadactyl/styles/ycombinator.css
+
