@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 
-@-moz-document domain('http://news.ycombinator.com/'), url-prefix('http://news.ycombinator.com/')
+@-moz-document domain('http://news.ycombinator.com/'), url-prefix('http://news.ycombinator.com/'), domain('http://hackerne.ws/'), url-prefix('http://hackerne.ws/')
 /* Georgify for Hacker News by Tuhin Kumar (http://tuhinkumar.com) */
 
 {
