@@ -1,9 +1,14 @@
 loadplugins
 
+" ui
+set guioptions=
+
+" Basic keys
+noremap ; :
+
+" Bookmarks
+
 set fbpath="~/Dropbox/Documents"
 set fbwebloc
-
-noremap ; :
-" inoremap ; :
 
 noremap <M-d> :fbmark 
