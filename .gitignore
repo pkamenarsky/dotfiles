@@ -8,6 +8,7 @@
 
 !.pentadactyl/
 !.pentadactyl/plugins
+!.pentadactyl/plugins/*
 !.pentadactyl/styles
 !.pentadactyl/styles/*
 !.pentadactylrc

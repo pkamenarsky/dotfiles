@@ -37,6 +37,3 @@
 [submodule ".vim/bundle/atea.vim"]
 	path = .vim/bundle/atea.vim
 	url = https://github.com/pkamenarsky/atea.vim
-[submodule ".pentadactyl/plugins"]
-	path = .pentadactyl/plugins
-	url = https://github.com/pkamenarsky/fbookmark
