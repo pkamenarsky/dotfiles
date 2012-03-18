@@ -13,6 +13,9 @@ set fbwebloc
 
 noremap <M-d> :fbmark 
 
+" Firebug
+:map <Leader>c :firebug console<CR>
+
 " HN style
 so ~/.pentadactyl/styles/ycombinator.css
 
