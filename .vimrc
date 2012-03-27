@@ -115,6 +115,9 @@ autocmd filetype clojure nmap <F1> <Plug>ClojureDocLookupWord
 autocmd filetype clojure nmap <silent> <ESC> <Plug>ClojureCloseResultBuffer
 autocmd filetype clojure nmap <D-r> ;update<CR><Plug>ClojureRequireFileAll
 
+" Aleph
+autocmd filetype clojure nmap <F5> ;update<CR><Plug>ClojureRequireFile<Plug>ClojureStartLocalRepl<CR>(tellme.core/restart)<CR>,close<CR>
+
 " diff 
 " set foldmethod=expr
 " set foldexpr=getline(v:lnum)!~'^diff\ '
