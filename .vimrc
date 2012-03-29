@@ -113,7 +113,12 @@ autocmd filetype clojure nmap § <Plug>ClojureStartLocalRepl
 autocmd filetype clojure nmap ` <Plug>ClojureStartLocalRepl
 autocmd filetype clojure nmap <F1> <Plug>ClojureDocLookupWord
 autocmd filetype clojure nmap <silent> <ESC> <Plug>ClojureCloseResultBuffer
+autocmd filetype clojure nmap <F4> ;update<CR><Plug>ClojureRequireFile
+autocmd filetype clojure nmap <F6> ;update<CR><Plug>ClojureRunTests
 autocmd filetype clojure nmap <D-r> ;update<CR><Plug>ClojureRequireFileAll
+
+" Lispwords
+autocmd filetype clojure setlocal lispwords+=deftest
 
 " Aleph
 autocmd filetype clojure nmap <F5> ;update<CR><Plug>ClojureRequireFile<Plug>ClojureStartLocalRepl<CR>(use 'tellme.core)<CR>(tellme.core/restart)<CR>,close<CR>
