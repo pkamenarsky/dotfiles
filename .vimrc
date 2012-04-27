@@ -67,7 +67,11 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+map <D-\> ;vsplit<CR>
+map <D-/> ;split<CR>
+
 " Autocomplete with Ctrl-Space
+inoremap <Tab> <C-x><C-o>
 inoremap <Nul> <C-x><C-o>
 inoremap <D-Space> <C-x><C-o>
 inoremap <C-Space> <C-x><C-o>
