@@ -67,6 +67,8 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+map <C-\> ;vsplit<CR>
+map <C-]> ;split<CR>
 map <D-\> ;vsplit<CR>
 map <D-/> ;split<CR>
 
