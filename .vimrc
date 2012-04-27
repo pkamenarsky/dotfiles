@@ -96,6 +96,7 @@ endfunction
 
 " Supertab
 let g:SuperTabDefaultCompletionType="<C-x><C-o>"
+inoremap <C-n> <C-x><C-n>
 
 " Yankring
 nnoremap <silent> <F3> :YRShow<CR>
@@ -137,18 +138,18 @@ autocmd filetype clojure nmap <F5> ;update<CR><Plug>ClojureRequireFile<Plug>Cloj
 " set foldexpr=(getline(v:lnum)=~'^diff\ ')?'<1':'1'
 
 " Erlang
-let g:erlangManPath="/usr/local/lib/erlang/man"
-let g:erlangWranglerPath="/usr/local/share/wrangler/"
-" let g:erlangCompletionGrep="zgrep"
-" let g:erlangManSuffix="erl\.gz"
+autocmd filetype erlang set number
 
-let g:erlangCompleteFile="$HOME/.vim/vimerl/autoload/erlang_complete.erl"
-let g:erlangCheckFile="$HOME/.vim/vimerl/compiler/erlang_check.erl"
+autocmd filetype erlang let g:erlangManPath="/usr/local/lib/erlang/man"
+autocmd filetype erlang let g:erlangWranglerPath="/usr/local/share/wrangler/"
+
+autocmd filetype erlang let g:erlangCompleteFile="$HOME/.vim/vimerl/autoload/erlang_complete.erl"
+autocmd filetype erlang let g:erlangCheckFile="$HOME/.vim/vimerl/compiler/erlang_check.erl"
 
 " mochiweb
-noremap <C-F5> ;! cd .. && ./rebar compile<CR><CR>
-noremap <M-F5> ;! cd .. && ./rebar compile<CR><CR>
-nmap <F7> ;Shell make test<CR><CR>
+autocmd filetype erlang noremap <C-F5> ;! cd .. && ./rebar compile<CR><CR>
+autocmd filetype erlang noremap <M-F5> ;! cd .. && ./rebar compile<CR><CR>
+autocmd filetype erlang nmap <F7> ;Shell make test<CR><CR>
 
 " CodeReview
 let g:CodeReviewer_reviewer="pk"
