@@ -149,7 +149,7 @@ autocmd filetype erlang let g:erlangCheckFile="$HOME/.vim/vimerl/compiler/erlang
 " mochiweb
 autocmd filetype erlang noremap <C-F5> ;! cd .. && ./rebar compile<CR><CR>
 autocmd filetype erlang noremap <M-F5> ;! cd .. && ./rebar compile<CR><CR>
-autocmd filetype erlang nmap <F7> ;update<CR>;Shell make test<CR><CR>
+autocmd filetype erlang nmap <F7> ;update<CR>;Shell make test<CR>
 
 " CodeReview
 let g:CodeReviewer_reviewer="pk"
