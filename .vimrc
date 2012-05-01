@@ -112,7 +112,7 @@ au BufNewFile,BufRead *.clj*  call PareditInitBuffer()
 autocmd filetype clojure set number
 
 let vimclojure#WantNailgun=1
-let vimclojure#NailgunClient="/Users/phil/bin/ng"
+let vimclojure#NailgunClient=expand("$HOME/bin/ng")
 
 let vimclojure#HighlightBuiltins=1
 let vimclojure#ParenRainbow=0
