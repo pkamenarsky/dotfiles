@@ -1,3 +1,6 @@
+" OS
+let OS = substitute(system('uname'), "\n", "", "")
+
 " Pathogen
 call pathogen#infect()
 
@@ -112,7 +115,13 @@ au BufNewFile,BufRead *.clj*  call PareditInitBuffer()
 autocmd filetype clojure set number
 
 let vimclojure#WantNailgun=1
-let vimclojure#NailgunClient="/Users/phil/bin/ng"
+
+" ng binary differs between Linux and MacOS
+if OS == "Linux"
+let vimclojure#NailgunClient=expand("$HOME/bin/ng-linux")
+else
+let vimclojure#NailgunClient=expand("$HOME/bin/ng")
+endif
 
 let vimclojure#HighlightBuiltins=1
 let vimclojure#ParenRainbow=0
