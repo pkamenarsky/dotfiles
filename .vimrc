@@ -190,3 +190,4 @@ endfunction
 
 command! -complete=shellcmd -nargs=* -bang Shell call s:ExecuteInShell(<q-args>, '<bang>')
 cabbrev shell Shell
+
