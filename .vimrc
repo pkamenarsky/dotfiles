@@ -50,6 +50,8 @@ endif
 " Basic key mappings
 nnoremap j gj
 nnoremap k gk
+vnoremap j gj
+vnoremap k gk
 
 nnoremap ; :
 nnoremap : ;
