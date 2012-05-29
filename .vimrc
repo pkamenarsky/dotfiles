@@ -48,13 +48,15 @@ else
 endif
 
 " Basic key mappings
+let maplocalleader='-'
+
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
 nnoremap ; :
-nnoremap : ;
+nnoremap :: ;
 inoremap jj <ESC>
 inoremap jk <ESC>
 
@@ -161,6 +163,12 @@ autocmd filetype erlang let g:erlangCheckFile="$HOME/.vim/vimerl/compiler/erlang
 autocmd filetype erlang noremap <C-F5> ;! cd .. && ./rebar compile<CR><CR>
 autocmd filetype erlang noremap <M-F5> ;! cd .. && ./rebar compile<CR><CR>
 autocmd filetype erlang nmap <F7> ;update<CR>;Shell make test<CR>
+
+" Haskell
+au BufEnter *.hs compiler ghc
+let g:haddock_browser = "open"
+let g:haddock_browser_callformat = "%s %s"
+let g:ghc = "/usr/bin/ghc"
 
 " CodeReview
 let g:CodeReviewer_reviewer="pk"
