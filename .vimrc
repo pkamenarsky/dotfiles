@@ -170,6 +170,8 @@ let g:haddock_browser = "open"
 let g:haddock_browser_callformat = "%s %s"
 let g:ghc = "/usr/bin/ghc"
 
+map <LocalLeader>r :GHCi 
+
 " CodeReview
 let g:CodeReviewer_reviewer="pk"
 let g:CodeReviewer_reviewFile="review.rev"
