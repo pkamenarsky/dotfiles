@@ -124,3 +124,5 @@ export MAGICK_HOME=$HOME/Projects/ImageMagick-6.6.9
 export PATH=$MAGICK_HOME/bin:$PATH
 export DYLD_LIBRARY_PATH=$MAGICK_HOME/lib/
 
+# lynx
+export PATH=$PATH:/Applications/Lynxlet.app/Contents/Resources/lynx/bin

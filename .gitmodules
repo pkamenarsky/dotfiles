@@ -49,3 +49,9 @@
 [submodule ".vim/bundle/vim-haskellConceal"]
 	path = .vim/bundle/vim-haskellConceal
 	url = https://github.com/Twinside/vim-haskellConceal.git
+[submodule ".vim/bundle/vim-hoogle"]
+	path = .vim/bundle/vim-hoogle
+	url = https://github.com/Twinside/vim-hoogle.git
+[submodule ".vim/bundle/vim-translator"]
+	path = .vim/bundle/vim-translator
+	url = https://github.com/maksimr/vim-translator.git

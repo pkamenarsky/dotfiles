@@ -170,9 +170,18 @@ let g:haddock_browser = "open"
 let g:haddock_browser_callformat = "%s %s"
 let g:ghc = "/usr/bin/ghc"
 
+map <LocalLeader>r :GHCi 
+
+au BufNewFile,BufRead *.hs map <buffer> <F1> :Hoogle
+au BufNewFile,BufRead *.hs map <buffer> <C-F1> :HoogleClose<CR>
+au BufNewFile,BufRead *.hs map <buffer> <S-F1> :HoogleLine<CR>
+
 " CodeReview
 let g:CodeReviewer_reviewer="pk"
 let g:CodeReviewer_reviewFile="review.rev"
+
+" Google translate
+let g:goog_user_conf = { 'langpair': 'de|en', 'v_key': 'T' }
 
 " markdown
 map <leader>md ;Mm<Cr>
