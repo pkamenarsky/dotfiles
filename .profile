@@ -21,3 +21,6 @@ export PATH=$MAGICK_HOME/bin:$PATH
 export DYLD_LIBRARY_PATH=$MAGICK_HOME/lib/
 
 export PATH=$PATH:/Applications/Lynxlet.app/Contents/Resources/lynx/bin
+
+export PATH=$PATH:~/Library/Haskell/ghc-7.0.3/lib/yesod-1.0.1.6/bin
+export PATH=$PATH:~/Library/Haskell/ghc-7.0.3/lib/hlint-1.8.29/bin
