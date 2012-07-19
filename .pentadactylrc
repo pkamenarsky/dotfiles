@@ -3,19 +3,36 @@ loadplugins
 " ui
 set guioptions=
 
+" Disable smooth scroll
+set scrollsteps=1
+set scrolltime=0
+
 " Basic keys
-noremap ; :
+nmap -builtin ; :
 
 " Bookmarks
 
 set fbpath="~/Dropbox/Documents"
 set fbwebloc
 
-noremap <M-d> :fbmark 
+nmap -builtin <M-d> :fbmark 
 
 " Firebug
-:map <Leader>c :firebug console<CR>
+nmap <Leader>c :firebug console<CR>
 
 " HN style
 so ~/.pentadactyl/styles/ycombinator.css
+
+" Readability
+command readability -description "Bookmarklet: Make webpage readable using readability" open javascript:(%28function%28%29%7Bwindow.baseUrl%3D%27http%3A//www.readability.com%27%3Bwindow.readabilityToken%3D%27%27%3Bvar%20s%3Ddocument.createElement%28%27script%27%29%3Bs.setAttribute%28%27type%27%2C%27text/javascript%27%29%3Bs.setAttribute%28%27charset%27%2C%27UTF-8%27%29%3Bs.setAttribute%28%27src%27%2CbaseUrl%2B%27/bookmarklet/read.js%27%29%3Bdocument.documentElement.appendChild%28s%29%3B%7D%29%28%29)
+nmap -builtin <Leader>r :readability<CR>
+
+" Fullscreen
+nmap -builtin <Leader>f :set fullscreen!<CR>
+
+" Display download
+nmap -builtin <Leader>d :downloads<CR>
+
+" Only show the tab bar when there are multiple tabs
+set showtabline=multitab
 
