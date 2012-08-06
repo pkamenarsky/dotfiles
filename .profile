@@ -5,6 +5,8 @@ alias gs="git status"
 alias gc="git commit -a -m"
 alias gp="git push origin master"
 alias gpu="git pull origin master"
+alias v="vim"
+alias vv="mvim"
 
 export CLICOLOR=1
 export TERM="xterm-256color"
