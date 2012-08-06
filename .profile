@@ -1,3 +1,11 @@
+# Aliases
+alias ll="ls -la"
+alias g="git"
+alias gs="git status"
+alias gc="git commit -a -m"
+alias gp="git push origin master"
+alias gpu="git pull origin master"
+
 export CLICOLOR=1
 export TERM="xterm-256color"
 
@@ -22,5 +30,6 @@ export DYLD_LIBRARY_PATH=$MAGICK_HOME/lib/
 
 export PATH=$PATH:/Applications/Lynxlet.app/Contents/Resources/lynx/bin
 
-export PATH=$PATH:~/Library/Haskell/ghc-7.0.3/lib/yesod-1.0.1.6/bin
-export PATH=$PATH:~/Library/Haskell/ghc-7.0.3/lib/hlint-1.8.29/bin
+export PATH=$PATH:~/Library/Haskell/ghc-7.4.1/lib/yesod-1.0.1.6/bin
+export PATH=$PATH:~/Library/Haskell/ghc-7.4.1/lib/hlint-1.8.29/bin
+export PATH=$PATH:~/Library/Haskell/ghc-7.4.1/lib/fay-0.1.0.0/bin
