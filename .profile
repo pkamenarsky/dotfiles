@@ -1,5 +1,6 @@
 # Aliases
 alias ll="ls -la"
+alias llr="ls -ltra"
 alias g="git"
 alias gs="git status"
 alias gc="git commit -a -m"
