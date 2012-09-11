@@ -55,3 +55,6 @@
 [submodule ".vim/bundle/vim-translator"]
 	path = .vim/bundle/vim-translator
 	url = https://github.com/maksimr/vim-translator.git
+[submodule ".vim/bundle/vim-javascript"]
+	path = .vim/bundle/vim-javascript
+	url = https://github.com/pangloss/vim-javascript.git

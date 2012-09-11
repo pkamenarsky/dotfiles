@@ -1,11 +1,22 @@
 # Aliases
 alias ll="ls -la"
 alias llr="ls -ltra"
+alias cpr="cp -Rv"
+
 alias g="git"
+alias ga="git add"
 alias gs="git status"
 alias gc="git commit -a -m"
 alias gp="git push origin master"
 alias gpu="git pull origin master"
+
+alias h="hg"
+alias ha="hg add"
+alias hs="hg status"
+alias hc="hg commit -m"
+alias hp="hg push"
+alias hpu="hg pull"
+
 alias v="vim"
 alias vv="mvim"
 
@@ -33,6 +44,9 @@ export DYLD_LIBRARY_PATH=$MAGICK_HOME/lib/
 
 export PATH=$PATH:/Applications/Lynxlet.app/Contents/Resources/lynx/bin
 
-export PATH=$PATH:~/Library/Haskell/ghc-7.4.1/lib/yesod-1.0.1.6/bin
-export PATH=$PATH:~/Library/Haskell/ghc-7.4.1/lib/hlint-1.8.29/bin
-export PATH=$PATH:~/Library/Haskell/ghc-7.4.1/lib/fay-0.1.0.0/bin
+# cabal executables
+export PATH=$PATH:~/Library/Haskell/bin
+
+# Android
+export PATH=$PATH:~/Projects/android-sdk-macosx/tools
+export PATH=$PATH:~/Projects/android-sdk-macosx/platform-tools
