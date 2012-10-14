@@ -126,3 +126,5 @@ export DYLD_LIBRARY_PATH=$MAGICK_HOME/lib/
 
 # lynx
 export PATH=$PATH:/Applications/Lynxlet.app/Contents/Resources/lynx/bin
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
