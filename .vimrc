@@ -65,6 +65,9 @@ map <down> <nop>
 map <left> <nop>
 map <right> <nop>
 
+" CtrlP
+let g:ctrlp_map = '<c-t>'
+
 " Printing (:hardcopy)
 let g:prd_fontList="courier:h6,courier:h8,courier:h10,courier:h12,courier:h14,monaco:h6,monaco:h8,monaco:h10"
 
