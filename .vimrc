@@ -65,6 +65,9 @@ map <down> <nop>
 map <left> <nop>
 map <right> <nop>
 
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! %!sudo tee > /dev/null %
+
 " CtrlP
 let g:ctrlp_map = '<c-t>'
 
@@ -178,6 +181,11 @@ map <LocalLeader>r :GHCi
 au BufNewFile,BufRead *.hs map <buffer> <F1> :Hoogle
 au BufNewFile,BufRead *.hs map <buffer> <C-F1> :HoogleClose<CR>
 au BufNewFile,BufRead *.hs map <buffer> <S-F1> :HoogleLine<CR>
+
+autocmd filetype haskell setlocal expandtab
+autocmd filetype haskell setlocal tabstop=4
+autocmd filetype haskell setlocal shiftwidth=4
+autocmd filetype haskell setlocal textwidth=79
 
 " CodeReview
 let g:CodeReviewer_reviewer="pk"
