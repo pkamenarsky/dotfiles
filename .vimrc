@@ -37,7 +37,8 @@ if has('gui_running')
 	set background=dark
 	colorscheme jellybeans
 	let g:jellybeans_use_lowcolor_black = 0
-	set guifont=Monaco:h12
+	" set guifont=DejaVuSansMono:h14
+	set guifont=Monaco:h13
 else
 	set t_Co=256
 	set background=dark
@@ -186,6 +187,13 @@ autocmd filetype haskell setlocal expandtab
 autocmd filetype haskell setlocal tabstop=4
 autocmd filetype haskell setlocal shiftwidth=4
 autocmd filetype haskell setlocal textwidth=79
+
+" Python
+autocmd filetype python setlocal expandtab
+autocmd filetype python setlocal tabstop=2
+autocmd filetype python setlocal shiftwidth=2
+autocmd filetype python setlocal textwidth=79
+autocmd filetype python set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
 " CodeReview
 let g:CodeReviewer_reviewer="pk"
