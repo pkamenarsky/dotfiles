@@ -165,6 +165,8 @@ autocmd filetype coffee set tabstop=2
 autocmd filetype coffee set shiftwidth=2
 autocmd filetype coffee set expandtab
 
+autocmd filetype coffee au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+
 " Erlang
 autocmd filetype erlang set number
 
