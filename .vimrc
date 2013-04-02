@@ -158,6 +158,13 @@ autocmd filetype clojure nmap <F5> ;update<CR><Plug>ClojureRequireFile<Plug>Cloj
 " set foldexpr=getline(v:lnum)!~'^diff\ '
 " set foldexpr=(getline(v:lnum)=~'^diff\ ')?'<1':'1'
 
+" CoffeeScript
+autocmd filetype coffee set number
+autocmd filetype coffee set softtabstop=2
+autocmd filetype coffee set tabstop=2
+autocmd filetype coffee set shiftwidth=2
+autocmd filetype coffee set expandtab
+
 " Erlang
 autocmd filetype erlang set number
 
