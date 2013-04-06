@@ -374,25 +374,8 @@
 			<dict>
 				<key>actionID</key>
 				<string>FileOpenAction</string>
-				<key>directArchive</key>
-				<dict>
-					<key>class</key>
-					<string>QSObject</string>
-					<key>data</key>
-					<dict>
-						<key>NSStringPboardType</key>
-						<string>/Applications/MacVim.app</string>
-					</dict>
-					<key>properties</key>
-					<dict>
-						<key>QSObjectName</key>
-						<string>/Applications/MacVim.app</string>
-						<key>QSObjectType</key>
-						<string>NSStringPboardType</string>
-					</dict>
-				</dict>
 				<key>directID</key>
-				<string>/Applications/MacVim.app</string>
+				<string>/usr/local/Cellar/macvim/7.3-66/MacVim.app</string>
 			</dict>
 			<key>enabled</key>
 			<true/>
