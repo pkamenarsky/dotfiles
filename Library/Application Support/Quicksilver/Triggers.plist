@@ -170,7 +170,7 @@
 				<key>actionID</key>
 				<string>FileOpenAction</string>
 				<key>directID</key>
-				<string>/Applications/Firefox.app</string>
+				<string>/Applications/Google Chrome.app</string>
 			</dict>
 			<key>enabled</key>
 			<true/>

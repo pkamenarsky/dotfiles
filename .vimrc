@@ -66,6 +66,14 @@ map <down> <nop>
 map <left> <nop>
 map <right> <nop>
 
+function Set80Columns()
+	if exists('+colorcolumn')
+		set colorcolumn=80
+	else
+		au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+	endif
+endfunction
+
 " CtrlP
 let g:ctrlp_map = '<c-t>'
 nmap <F5> ;CtrlPClearCache<CR>
@@ -164,8 +172,7 @@ autocmd filetype coffee set softtabstop=2
 autocmd filetype coffee set tabstop=2
 autocmd filetype coffee set shiftwidth=2
 autocmd filetype coffee set expandtab
-
-autocmd filetype coffee au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+autocmd filetype coffee call Set80Columns()
 
 " Erlang
 autocmd filetype erlang set number

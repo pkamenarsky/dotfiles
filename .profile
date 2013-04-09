@@ -47,6 +47,9 @@ export PATH=$PATH:/Applications/Lynxlet.app/Contents/Resources/lynx/bin
 # cabal executables
 export PATH=$PATH:~/Library/Haskell/bin
 
+# npm
+export PATH=$PATH:/usr/local/share/npm/bin
+
 # Android
 export PATH=$PATH:~/Projects/android-sdk-macosx/tools
 export PATH=$PATH:~/Projects/android-sdk-macosx/platform-tools
