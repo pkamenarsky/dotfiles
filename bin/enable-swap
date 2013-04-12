@@ -1,0 +1,2 @@
+#!/bin/sh
+sudo launchctl load -wF /System/Library/LaunchDaemons/com.apple.dynamic_pager.plist
