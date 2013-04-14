@@ -45,7 +45,7 @@ export DYLD_LIBRARY_PATH=$MAGICK_HOME/lib/
 export PATH=$PATH:/Applications/Lynxlet.app/Contents/Resources/lynx/bin
 
 # cabal executables
-export PATH=$PATH:~/Library/Haskell/bin
+export PATH=$PATH:~/.cabal/bin
 
 # npm
 export PATH=$PATH:/usr/local/share/npm/bin
