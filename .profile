@@ -29,6 +29,10 @@ export PATH=$CLOJURE_HOME:$PATH
 export CLOJURESCRIPT_HOME=$HOME/Projects/clojurescript/
 export PATH=$CLOJURESCRIPT_HOME/bin:$PATH
 
+# old less version
+export PATH=$PATH:/Applications/Less.app/Contents/Resources/engines/bin
+
+
 # export CLOJURE_OPTS="-XstartOnFirstThread"
 # export CLOJURE_OPTS="-d32"
 
@@ -58,3 +62,4 @@ export PATH=$PATH:~/Projects/android-sdk-macosx/platform-tools
 # The orginal version is saved in .profile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 export PATH
+

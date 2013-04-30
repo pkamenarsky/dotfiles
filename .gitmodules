@@ -61,3 +61,6 @@
 [submodule ".vim/bundle/html-template-syntax"]
 	path = .vim/bundle/html-template-syntax
 	url = https://github.com/pbrisbin/html-template-syntax.git
+[submodule ".vim/bundle/vim-less"]
+	path = .vim/bundle/vim-less
+	url = https://github.com/groenewege/vim-less
