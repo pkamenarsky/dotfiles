@@ -78,6 +78,10 @@ endfunction
 let g:ctrlp_map = '<c-t>'
 nmap <F5> ;CtrlPClearCache<CR>
 
+" Sessions
+set ssop-=options    " do not store global and local values in a session
+set ssop-=folds      " do not store folds
+
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! %!sudo tee > /dev/null %
 
