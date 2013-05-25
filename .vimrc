@@ -76,6 +76,7 @@ endfunction
 
 " CtrlP
 let g:ctrlp_map = '<c-t>'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,node_modules,dist
 nmap <F5> ;CtrlPClearCache<CR>
 
 " Sessions
@@ -169,6 +170,13 @@ autocmd filetype clojure nmap <F5> ;update<CR><Plug>ClojureRequireFile<Plug>Cloj
 " set foldmethod=expr
 " set foldexpr=getline(v:lnum)!~'^diff\ '
 " set foldexpr=(getline(v:lnum)=~'^diff\ ')?'<1':'1'
+
+" HTML
+autocmd filetype html set number
+autocmd filetype html set softtabstop=2
+autocmd filetype html set tabstop=2
+autocmd filetype html set shiftwidth=2
+autocmd filetype html set expandtab
 
 " CoffeeScript
 autocmd filetype coffee set number
