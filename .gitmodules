@@ -31,9 +31,6 @@
 [submodule ".vim/bundle/atea.vim"]
 	path = .vim/bundle/atea.vim
 	url = https://github.com/pkamenarsky/atea.vim
-[submodule ".vim/bundle/supertab"]
-	path = .vim/bundle/supertab
-	url = https://github.com/ervandew/supertab.git
 [submodule ".vim/bundle/bgcmd"]
 	path = .vim/bundle/bgcmd
 	url = git@github.com:pkamenarsky/vim-plugin-bgcmd.git

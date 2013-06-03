@@ -34,8 +34,8 @@ set go-=L
 
 " Color scheme
 if has('gui_running')
-	set background=dark
-	colorscheme jellybeans
+	set background=light
+	colorscheme solarized
 	let g:jellybeans_use_lowcolor_black = 0
 	" set guifont=DejaVuSansMono:h14
 	set guifont=Monaco:h13
@@ -65,14 +65,6 @@ map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
-
-function Set80Columns()
-	if exists('+colorcolumn')
-		set colorcolumn=80
-	else
-		au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-	endif
-endfunction
 
 " CtrlP
 let g:ctrlp_map = '<c-t>'
@@ -107,8 +99,13 @@ inoremap <C-Space> <C-x><C-o>
 
 " Highlight word under cursor
 setl updatetime=500
-:highlight CursorWord guibg=#404040
-autocmd CursorHold * silent! exe printf('match CursorWord /\<%s\>/', expand('<cword>'))
+if has('gui_running')
+	highlight CursorWord guibg=#eee8d5
+else
+	highlight CursorWord guibg=#404040
+endif
+" autocmd CursorHold * silent! exe printf('match CursorWord /\<%s\>/', expand('<cword>'))
+autocmd CursorHold * exe printf('match CursorWord /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 
 " Text modifiers
 " modify selected text using combining diacritics
@@ -121,10 +118,6 @@ function! s:CombineSelection(line1, line2, cp)
   execute 'let char = "\u'.a:cp.'"'
   execute a:line1.','.a:line2.'s/\%V[^[:cntrl:]]/&'.char.'/ge'
 endfunction
-
-" Supertab
-let g:SuperTabDefaultCompletionType="<C-x><C-o>"
-inoremap <C-n> <C-x><C-n>
 
 " Yankring
 nnoremap <silent> <F3> :YRShow<CR>
@@ -172,19 +165,19 @@ autocmd filetype clojure nmap <F5> ;update<CR><Plug>ClojureRequireFile<Plug>Cloj
 " set foldexpr=(getline(v:lnum)=~'^diff\ ')?'<1':'1'
 
 " HTML
-autocmd filetype html set number
-autocmd filetype html set softtabstop=2
-autocmd filetype html set tabstop=2
-autocmd filetype html set shiftwidth=2
-autocmd filetype html set expandtab
+autocmd filetype html setlocal number
+autocmd filetype html setlocal softtabstop=2
+autocmd filetype html setlocal tabstop=2
+autocmd filetype html setlocal shiftwidth=2
+autocmd filetype html setlocal expandtab
 
 " CoffeeScript
-autocmd filetype coffee set number
-autocmd filetype coffee set softtabstop=2
-autocmd filetype coffee set tabstop=2
-autocmd filetype coffee set shiftwidth=2
-autocmd filetype coffee set expandtab
-autocmd filetype coffee call Set80Columns()
+autocmd filetype coffee setlocal number
+autocmd filetype coffee setloca softtabstop=2
+autocmd filetype coffee setloca tabstop=2
+autocmd filetype coffee setloca shiftwidth=2
+autocmd filetype coffee setloca expandtab
+autocmd filetype coffee setlocal textwidth=79
 
 " Erlang
 autocmd filetype erlang set number
@@ -212,21 +205,20 @@ au BufNewFile,BufRead *.hs map <buffer> <F1> :Hoogle
 au BufNewFile,BufRead *.hs map <buffer> <C-F1> :HoogleClose<CR>
 au BufNewFile,BufRead *.hs map <buffer> <S-F1> :HoogleLine<CR>
 
+autocmd filetype haskell setlocal number
+autocmd filetype haskell setlocal softtabstop=2
+autocmd filetype haskell setlocal tabstop=2
+autocmd filetype haskell setlocal shiftwidth=2
 autocmd filetype haskell setlocal expandtab
-autocmd filetype haskell setlocal tabstop=4
-autocmd filetype haskell setlocal shiftwidth=4
 autocmd filetype haskell setlocal textwidth=79
 
 " Python
+autocmd filetype python setlocal number
 autocmd filetype python setlocal expandtab
 autocmd filetype python setlocal tabstop=2
 autocmd filetype python setlocal shiftwidth=2
 autocmd filetype python setlocal textwidth=79
 autocmd filetype python set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-
-" CodeReview
-let g:CodeReviewer_reviewer="pk"
-let g:CodeReviewer_reviewFile="review.rev"
 
 " Google translate
 let g:goog_user_conf = { 'langpair': 'de|en', 'v_key': 'T' }
