@@ -133,8 +133,6 @@ autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 au BufNewFile,BufRead *.clj* set filetype=clojure
 au BufNewFile,BufRead *.clj*  call PareditInitBuffer()
 
-autocmd filetype clojure set number
-
 let vimclojure#WantNailgun=1
 
 " ng binary differs between Linux and MacOS
@@ -168,23 +166,26 @@ autocmd filetype clojure nmap <F5> ;update<CR><Plug>ClojureRequireFile<Plug>Cloj
 " set foldexpr=(getline(v:lnum)=~'^diff\ ')?'<1':'1'
 
 " HTML
-autocmd filetype html setlocal number
 autocmd filetype html setlocal softtabstop=2
 autocmd filetype html setlocal tabstop=2
 autocmd filetype html setlocal shiftwidth=2
 autocmd filetype html setlocal expandtab
 
 " CoffeeScript
-autocmd filetype coffee setlocal number
 autocmd filetype coffee setloca softtabstop=2
 autocmd filetype coffee setloca tabstop=2
 autocmd filetype coffee setloca shiftwidth=2
 autocmd filetype coffee setloca expandtab
 autocmd filetype coffee setlocal colorcolumn=80
 
-" Erlang
-autocmd filetype erlang set number
+" JS
+autocmd filetype javascript setloca softtabstop=2
+autocmd filetype javascript setloca tabstop=2
+autocmd filetype javascript setloca shiftwidth=2
+autocmd filetype javascript setloca expandtab
+autocmd filetype javascript setlocal colorcolumn=80
 
+" Erlang
 autocmd filetype erlang let g:erlangManPath="/usr/local/lib/erlang/man"
 autocmd filetype erlang let g:erlangWranglerPath="/usr/local/share/wrangler/"
 
@@ -208,7 +209,6 @@ au BufNewFile,BufRead *.hs map <buffer> <F1> :Hoogle
 au BufNewFile,BufRead *.hs map <buffer> <C-F1> :HoogleClose<CR>
 au BufNewFile,BufRead *.hs map <buffer> <S-F1> :HoogleLine<CR>
 
-autocmd filetype haskell setlocal number
 autocmd filetype haskell setlocal softtabstop=4
 autocmd filetype haskell setlocal tabstop=4
 autocmd filetype haskell setlocal shiftwidth=4
