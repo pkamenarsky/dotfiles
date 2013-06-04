@@ -48,6 +48,9 @@ else
 	" set background=dark
 endif
 
+" Disable Ex mode
+map Q <Nop>
+
 " Basic key mappings
 let maplocalleader='-'
 
@@ -177,7 +180,7 @@ autocmd filetype coffee setloca softtabstop=2
 autocmd filetype coffee setloca tabstop=2
 autocmd filetype coffee setloca shiftwidth=2
 autocmd filetype coffee setloca expandtab
-autocmd filetype coffee setlocal textwidth=79
+autocmd filetype coffee setlocal colorcolumn=80
 
 " Erlang
 autocmd filetype erlang set number
@@ -206,18 +209,18 @@ au BufNewFile,BufRead *.hs map <buffer> <C-F1> :HoogleClose<CR>
 au BufNewFile,BufRead *.hs map <buffer> <S-F1> :HoogleLine<CR>
 
 autocmd filetype haskell setlocal number
-autocmd filetype haskell setlocal softtabstop=2
-autocmd filetype haskell setlocal tabstop=2
-autocmd filetype haskell setlocal shiftwidth=2
+autocmd filetype haskell setlocal softtabstop=4
+autocmd filetype haskell setlocal tabstop=4
+autocmd filetype haskell setlocal shiftwidth=4
 autocmd filetype haskell setlocal expandtab
-autocmd filetype haskell setlocal textwidth=79
+autocmd filetype haskell setlocal colorcolumn=80
 
 " Python
 autocmd filetype python setlocal number
 autocmd filetype python setlocal expandtab
 autocmd filetype python setlocal tabstop=2
 autocmd filetype python setlocal shiftwidth=2
-autocmd filetype python setlocal textwidth=79
+autocmd filetype python setlocal colorcolumn=80
 autocmd filetype python set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
 " Google translate
