@@ -172,17 +172,17 @@ autocmd filetype html setlocal shiftwidth=2
 autocmd filetype html setlocal expandtab
 
 " CoffeeScript
-autocmd filetype coffee setloca softtabstop=2
-autocmd filetype coffee setloca tabstop=2
-autocmd filetype coffee setloca shiftwidth=2
-autocmd filetype coffee setloca expandtab
+autocmd filetype coffee setlocal softtabstop=2
+autocmd filetype coffee setlocal tabstop=2
+autocmd filetype coffee setlocal shiftwidth=2
+autocmd filetype coffee setlocal expandtab
 autocmd filetype coffee setlocal colorcolumn=80
 
 " JS
-autocmd filetype javascript setloca softtabstop=2
-autocmd filetype javascript setloca tabstop=2
-autocmd filetype javascript setloca shiftwidth=2
-autocmd filetype javascript setloca expandtab
+autocmd filetype javascript setlocal softtabstop=2
+autocmd filetype javascript setlocal tabstop=2
+autocmd filetype javascript setlocal shiftwidth=2
+autocmd filetype javascript setlocal expandtab
 autocmd filetype javascript setlocal colorcolumn=80
 
 " Erlang
