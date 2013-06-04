@@ -179,6 +179,7 @@ autocmd filetype coffee setlocal expandtab
 autocmd filetype coffee setlocal colorcolumn=80
 
 " JS
+autocmd filetype javascript setlocal nonumber
 autocmd filetype javascript setlocal softtabstop=2
 autocmd filetype javascript setlocal tabstop=2
 autocmd filetype javascript setlocal shiftwidth=2
