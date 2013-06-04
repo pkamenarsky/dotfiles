@@ -172,6 +172,7 @@ autocmd filetype html setlocal shiftwidth=2
 autocmd filetype html setlocal expandtab
 
 " CoffeeScript
+autocmd filetype coffee setlocal nonumber
 autocmd filetype coffee setlocal softtabstop=2
 autocmd filetype coffee setlocal tabstop=2
 autocmd filetype coffee setlocal shiftwidth=2
