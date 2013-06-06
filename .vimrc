@@ -179,6 +179,22 @@ autocmd filetype coffee setlocal shiftwidth=2
 autocmd filetype coffee setlocal expandtab
 autocmd filetype coffee setlocal colorcolumn=80
 
+" Handlebars
+autocmd filetype hbs setlocal nonumber
+autocmd filetype hbs setlocal softtabstop=2
+autocmd filetype hbs setlocal tabstop=2
+autocmd filetype hbs setlocal shiftwidth=2
+autocmd filetype hbs setlocal expandtab
+autocmd filetype hbs setlocal colorcolumn=80
+
+" less
+autocmd filetype less setlocal nonumber
+autocmd filetype less setlocal softtabstop=2
+autocmd filetype less setlocal tabstop=2
+autocmd filetype less setlocal shiftwidth=2
+autocmd filetype less setlocal expandtab
+autocmd filetype less setlocal colorcolumn=80
+
 " JS
 autocmd filetype javascript setlocal nonumber
 autocmd filetype javascript setlocal softtabstop=2
