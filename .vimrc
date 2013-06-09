@@ -179,6 +179,14 @@ autocmd filetype coffee setlocal shiftwidth=2
 autocmd filetype coffee setlocal expandtab
 autocmd filetype coffee setlocal colorcolumn=80
 
+" Ruby
+autocmd filetype rb setlocal nonumber
+autocmd filetype rb setlocal softtabstop=2
+autocmd filetype rb setlocal tabstop=2
+autocmd filetype rb setlocal shiftwidth=2
+autocmd filetype rb setlocal expandtab
+autocmd filetype rb setlocal colorcolumn=80
+
 " Handlebars
 autocmd filetype hbs setlocal nonumber
 autocmd filetype hbs setlocal softtabstop=2
