@@ -64,4 +64,4 @@ PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 export PATH
 
 # cabal-dev
-export GHC_PACKAGE_PATH=/Library/Frameworks/GHC.framework/Versions/7.6.3-x86_64/usr/lib/ghc-7.6.3/package.conf.d:$HOME/.ghc/x86_64-darwin-7.6.3/package.conf.d:cabal-dev/packages-7.6.3.conf
+# export GHC_PACKAGE_PATH=/Library/Frameworks/GHC.framework/Versions/7.6.3-x86_64/usr/lib/ghc-7.6.3/package.conf.d:$HOME/.ghc/x86_64-darwin-7.6.3/package.conf.d:cabal-dev/packages-7.6.3.conf
