@@ -64,3 +64,6 @@
 [submodule ".vim/bundle/vim-colors-solarized"]
 	path = .vim/bundle/vim-colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule ".vim/bundle/vim-latex-live-preview"]
+	path = .vim/bundle/vim-latex-live-preview
+	url = https://github.com/xuhdev/vim-latex-live-preview.git
