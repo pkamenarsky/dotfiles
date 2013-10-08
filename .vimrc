@@ -224,22 +224,27 @@ autocmd filetype erlang noremap <M-F5> ;! cd .. && ./rebar compile<CR><CR>
 autocmd filetype erlang nmap <F7> ;update<CR>;Shell make test<CR>
 
 " Haskell
-au BufEnter *.hs compiler ghc
-let g:haddock_browser = "open"
-let g:haddock_browser_callformat = "%s %s"
-let g:ghc = "/usr/bin/ghc"
+" au BufEnter *.hs compiler ghc
+au filetype haskell let g:haddock_browser = "open"
+au filetype haskell let g:haddock_browser_callformat = "%s %s"
+au filetype haskell let g:ghc = "/usr/bin/ghc"
+au filetype haskell let g:necoghc_enable_detailed_browse = 1
 
-map <LocalLeader>r :GHCi 
+au filetype haskell map <LocalLeader>t :GhcModType<CR>
+au filetype haskell map <LocalLeader>c :GhcModTypeClear<CR>
+au filetype haskell setlocal omnifunc=necoghc#omnifunc
+
+au BufWritePost *.hs GhcModCheckAndLintAsync
 
 au BufNewFile,BufRead *.hs map <buffer> <F1> :Hoogle
 au BufNewFile,BufRead *.hs map <buffer> <C-F1> :HoogleClose<CR>
 au BufNewFile,BufRead *.hs map <buffer> <S-F1> :HoogleLine<CR>
 
-autocmd filetype haskell setlocal softtabstop=4
-autocmd filetype haskell setlocal tabstop=4
-autocmd filetype haskell setlocal shiftwidth=4
-autocmd filetype haskell setlocal expandtab
-autocmd filetype haskell setlocal colorcolumn=80
+au filetype haskell setlocal softtabstop=4
+au filetype haskell setlocal tabstop=4
+au filetype haskell setlocal shiftwidth=4
+au filetype haskell setlocal expandtab
+au filetype haskell setlocal colorcolumn=80
 
 " Python
 autocmd filetype python setlocal number
