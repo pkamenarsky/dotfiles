@@ -64,3 +64,6 @@
 [submodule ".vim/bundle/vim-latex-live-preview"]
 	path = .vim/bundle/vim-latex-live-preview
 	url = https://github.com/xuhdev/vim-latex-live-preview.git
+[submodule "/Users/phil/.vim/bundle/vimproc.vim"]
+	path = /Users/phil/.vim/bundle/vimproc.vim
+	url = https://github.com/Shougo/vimproc.vim.git
