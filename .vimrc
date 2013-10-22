@@ -93,10 +93,10 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 
 map <C-\> ;vsplit<CR>
-map <C-[> ;split<CR>
+map <C-?> ;split<CR>
 map <D-\> ;vsplit<CR>
 map <D-/> ;split<CR>
-map <D-[> ;split<CR>
+map <D-?> ;split<CR>
 
 " Autocomplete with Ctrl-Space
 inoremap <Nul> <C-x><C-o>
