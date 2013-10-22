@@ -6,6 +6,27 @@
 	<array>
 		<dict>
 			<key>ID</key>
+			<string>CA14061E-53D3-4A00-835A-5F7C01AB5BC6</string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>FileOpenAction</string>
+				<key>directID</key>
+				<string>/Applications/Mail.app</string>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>46</integer>
+			<key>modifiers</key>
+			<integer>1310985</integer>
+			<key>onPress</key>
+			<true/>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
 			<string>944818B9-8D97-43D6-8BF4-783A5D58B33C</string>
 			<key>command</key>
 			<dict>
@@ -170,7 +191,7 @@
 				<key>actionID</key>
 				<string>FileOpenAction</string>
 				<key>directID</key>
-				<string>/Applications/Google Chrome.app</string>
+				<string>/Applications/Firefox.app</string>
 			</dict>
 			<key>enabled</key>
 			<true/>
@@ -316,6 +337,27 @@
 			<string>Search Artists</string>
 			<key>set</key>
 			<string>iTunes</string>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>DEA9827D-7E15-47CA-B719-79F5B65CBAFB</string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>FileOpenAction</string>
+				<key>directID</key>
+				<string>/Applications/Skype.app</string>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>1</integer>
+			<key>modifiers</key>
+			<integer>1310985</integer>
+			<key>onPress</key>
+			<true/>
 			<key>type</key>
 			<string>QSHotKeyTrigger</string>
 		</dict>
