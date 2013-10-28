@@ -182,6 +182,9 @@ autocmd filetype coffee setlocal shiftwidth=2
 autocmd filetype coffee setlocal expandtab
 autocmd filetype coffee setlocal colorcolumn=80
 
+" json
+command! PprintJson %!python -m json.tool
+
 " Ruby
 autocmd filetype ruby setlocal nonumber
 autocmd filetype ruby setlocal softtabstop=2
