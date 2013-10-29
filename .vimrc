@@ -31,6 +31,7 @@ set backupdir=~/.vim/backup
 set directory=~/.vim/swap
 
 set tags=./tags;
+nnoremap <C-BS> :pop<CR>
 
 set go-=L
 
