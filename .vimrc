@@ -33,6 +33,7 @@ set directory=~/.vim/swap
 
 set tags=./tags;
 nnoremap <C-BS> :pop<CR>
+nnoremap <C-?> :pop<CR>
 
 set go-=L
 
@@ -70,6 +71,12 @@ map <down> <nop>
 map <left> <nop>
 map <right> <nop>
 
+" Save
+imap <C-s> <C-o>;update<CR> " doesn't work
+nmap <C-s> ;update<CR> " doesn't work
+imap <F2> <C-o>;update<CR>
+nmap <F2> ;update<CR>
+
 " CtrlP
 let g:ctrlp_map = '<c-t>'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,node_modules,dist
@@ -92,9 +99,9 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 
 map <C-\> ;vsplit<CR>
-map <C-?> ;split<CR>
+map <C-m> ;split<CR>
 map <D-\> ;vsplit<CR>
-map <D-/> ;split<CR>
+map <D-m> ;split<CR>
 map <D-?> ;split<CR>
 
 " Autocomplete with Ctrl-Space
