@@ -15,6 +15,7 @@ set ignorecase
 set backspace=indent,eol,start
 set guioptions-=T
 set guioptions-=r
+set guioptions-=e
 set linebreak
 set tabstop=4
 set shiftwidth=4
@@ -39,15 +40,12 @@ set go-=L
 if has('gui_running')
 	set background=light
 	colorscheme solarized
-	let g:jellybeans_use_lowcolor_black = 0
 	" set guifont=DejaVuSansMono:h14
 	set guifont=Monaco:h13
 else
 	set t_Co=256
-	set background=dark
-	colorscheme jellybeans
-	let g:jellybeans_use_lowcolor_black = 0
-	" colorscheme slate
+	set background=light
+	colorscheme solarized
 	" set background=dark
 endif
 
