@@ -31,6 +31,8 @@ set noerrorbells
 set backupdir=~/.vim/backup
 set directory=~/.vim/swap
 
+set clipboard=unnamed
+
 set tags=./tags;
 noremap <C-?> :pop<CR>
 
