@@ -76,6 +76,7 @@ imap <F2> <C-o>;update<CR>
 nmap <F2> ;update<CR>
 
 " Quickfix
+map <F10> ;ccl<CR>
 map <F11> ;cprev<CR>
 map <F12> ;cnext<CR>
 
