@@ -72,10 +72,12 @@ map <left> <nop>
 map <right> <nop>
 
 " Save
-imap <C-s> <C-o>;update<CR> " doesn't work
-nmap <C-s> ;update<CR> " doesn't work
 imap <F2> <C-o>;update<CR>
 nmap <F2> ;update<CR>
+
+" Quickfix
+map <F11> ;cprev<CR>
+map <F12> ;cnext<CR>
 
 " CtrlP
 let g:ctrlp_map = '<c-t>'
@@ -241,9 +243,16 @@ au filetype haskell let g:haddock_browser_callformat = "%s %s"
 au filetype haskell let g:ghc = "/usr/bin/ghc"
 au filetype haskell let g:necoghc_enable_detailed_browse = 1
 
+au filetype haskell let Grep_Default_Options = '-w'
+au filetype haskell let Grep_Skip_Dirs = 'build cabal-dev dist src-exe doc .git .hg'
+au filetype haskell let Grep_Default_Filelist = '*.hs'
+
 au filetype haskell map <LocalLeader>t :GhcModType<CR>
 au filetype haskell map <LocalLeader>c :GhcModTypeClear<CR>
 au filetype haskell setlocal omnifunc=necoghc#omnifunc
+
+au filetype haskell map <silent> <LocalLeader>s :Rgrep<CR><CR><C-u>.<CR><CR>
+au filetype haskell map <silent> <LocalLeader>i :Rgrep<CR><C-u>instance .*<C-r><C-w><CR><C-u>.<CR><CR>
 
 au BufWritePost *.hs GhcModCheckAndLintAsync
 au BufWritePost *.hs ;!hasktags --ignore-close-implementation --ctags .; sort tags -o tags &

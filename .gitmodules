@@ -79,3 +79,6 @@
 [submodule ".vim/bundle/ack.vim"]
 	path = .vim/bundle/ack.vim
 	url = https://github.com/mileszs/ack.vim.git
+[submodule ".vim/bundle/grep.vim"]
+	path = .vim/bundle/grep.vim
+	url = https://github.com/vim-scripts/grep.vim.git
