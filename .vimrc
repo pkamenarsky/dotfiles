@@ -256,7 +256,7 @@ au filetype haskell map <silent> <LocalLeader>s :Rgrep<CR><CR><C-u>.<CR><CR>
 au filetype haskell map <silent> <LocalLeader>i :Rgrep<CR><C-u>instance .*<C-r><C-w><CR><C-u>.<CR><CR>
 
 au BufWritePost *.hs GhcModCheckAndLintAsync
-au BufWritePost *.hs ;!hasktags --ignore-close-implementation --ctags .; sort tags -o tags &
+au BufWritePost *.hs :silent !hasktags --ignore-close-implementation --ctags .; sort tags -o tags &
 
 au BufNewFile,BufRead *.hs map <buffer> <F1> :Hoogle
 au BufNewFile,BufRead *.hs map <buffer> <C-F1> :HoogleClose<CR>
