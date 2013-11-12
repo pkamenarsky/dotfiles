@@ -81,6 +81,8 @@ nmap <F2> ;update<CR>
 let g:ctrlp_map = '<c-t>'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,node_modules,dist
 nmap <F5> ;CtrlPClearCache<CR>
+" nmap <C-f> ;CtrlPTag<CR>
+nmap <C-f> ;CtrlPTag<CR>
 
 " Sessions
 set ssop-=options    " do not store global and local values in a session
@@ -244,6 +246,7 @@ au filetype haskell map <LocalLeader>c :GhcModTypeClear<CR>
 au filetype haskell setlocal omnifunc=necoghc#omnifunc
 
 au BufWritePost *.hs GhcModCheckAndLintAsync
+au BufWritePost *.hs ;!hasktags --ignore-close-implementation --ctags .; sort tags -o tags &
 
 au BufNewFile,BufRead *.hs map <buffer> <F1> :Hoogle
 au BufNewFile,BufRead *.hs map <buffer> <C-F1> :HoogleClose<CR>
