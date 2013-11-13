@@ -252,7 +252,7 @@ au filetype haskell map <LocalLeader>t :GhcModType<CR>
 au filetype haskell map <LocalLeader>c :GhcModTypeClear<CR>
 au filetype haskell setlocal omnifunc=necoghc#omnifunc
 
-au filetype haskell map <silent> <LocalLeader>s :Rgrep<CR><CR><C-u>.<CR><CR>
+au filetype haskell map <silent> <LocalLeader>s :Rgrep<CR><CR><C-u>.<CR><CR><CR>
 au filetype haskell map <silent> <LocalLeader>i :Rgrep<CR><C-u>instance .*<C-r><C-w><CR><C-u>.<CR><CR>
 
 au BufWritePost *.hs GhcModCheckAndLintAsync
