@@ -268,6 +268,56 @@ au filetype haskell setlocal shiftwidth=4
 au filetype haskell setlocal expandtab
 au filetype haskell setlocal colorcolumn=80
 
+function! Myinput(p)
+   if version >=602
+      call inputsave()
+   endif
+      let x=input(a:p)
+   if version >=602
+      call inputrestore()
+   endif
+      return x
+endfunction
+
+function! Haskell_refac_msg(dialog,msg)
+  let visible = bufwinnr('^refac$')
+  if bufexists('^refac$')
+    set switchbuf+=useopen
+    sbuf ^refac$
+    call append(line('$'),a:msg)
+    if visible==-1
+      hide
+    else
+      sbuf %
+    endif
+  else
+    hide new refac
+    set bufhidden=hide
+    set buftype=nofile
+    set noswapfile
+    call append(line('$'),a:msg)
+    hide
+  endif
+ if a:dialog
+   call confirm(a:msg)
+ endif
+endfunction
+
+function! HaskellRename()
+	let fileName = expand("%:p")
+	let name = Myinput("New name? ")
+	let line = line(".")
+	let column = col(".")
+
+	let @r=''
+    redir @r
+
+	silent execute ":!ghc-hare rename ".fileName." ".name." ".line." ".column
+
+	redir END
+	call Haskell_refac_msg(0,@r)
+endfunction
+
 " Python
 autocmd filetype python setlocal number
 autocmd filetype python setlocal expandtab
