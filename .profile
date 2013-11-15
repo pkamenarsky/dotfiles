@@ -68,3 +68,6 @@ export PATH=/usr/local/bin:$PATH
 
 # cabal-dev
 # export GHC_PACKAGE_PATH=/Library/Frameworks/GHC.framework/Versions/7.6.3-x86_64/usr/lib/ghc-7.6.3/package.conf.d:$HOME/.ghc/x86_64-darwin-7.6.3/package.conf.d:cabal-dev/packages-7.6.3.conf
+
+# RVM stuff
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
