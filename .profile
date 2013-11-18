@@ -74,3 +74,5 @@ export PATH=/usr/local/bin:$PATH
 
 export EDITOR=vim
 export VISUAL=vim
+
+set -o vi
