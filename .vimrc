@@ -319,7 +319,7 @@ function! HaskellRename()
 endfunction
 
 " Python
-autocmd filetype python setlocal number
+autocmd filetype python setlocal nonumber
 autocmd filetype python setlocal expandtab
 autocmd filetype python setlocal tabstop=2
 autocmd filetype python setlocal shiftwidth=2
