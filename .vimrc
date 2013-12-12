@@ -268,6 +268,9 @@ au filetype haskell setlocal shiftwidth=4
 au filetype haskell setlocal expandtab
 au filetype haskell setlocal colorcolumn=80
 
+" match parens correctly
+au filetype haskell setlocal cpoptions+=M
+
 function! Myinput(p)
    if version >=602
       call inputsave()
