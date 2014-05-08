@@ -262,9 +262,9 @@ au BufNewFile,BufRead *.hs map <buffer> <F1> :Hoogle
 au BufNewFile,BufRead *.hs map <buffer> <C-F1> :HoogleClose<CR>
 au BufNewFile,BufRead *.hs map <buffer> <S-F1> :HoogleLine<CR>
 
-au filetype haskell setlocal softtabstop=4
-au filetype haskell setlocal tabstop=4
-au filetype haskell setlocal shiftwidth=4
+au filetype haskell setlocal softtabstop=2
+au filetype haskell setlocal tabstop=2
+au filetype haskell setlocal shiftwidth=2
 au filetype haskell setlocal expandtab
 au filetype haskell setlocal colorcolumn=80
 
@@ -320,6 +320,9 @@ function! HaskellRename()
 	redir END
 	call Haskell_refac_msg(0,@r)
 endfunction
+
+" pretty print Show instances
+command! PprintShow %!ppsh
 
 " Python
 autocmd filetype python setlocal nonumber
