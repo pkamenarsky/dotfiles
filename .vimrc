@@ -158,6 +158,15 @@ autocmd filetype clojure nmap <F5> ;update<CR><Plug>ClojureRequireFile<Plug>Cloj
 " set foldexpr=getline(v:lnum)!~'^diff\ '
 " set foldexpr=(getline(v:lnum)=~'^diff\ ')?'<1':'1'
 
+" Jade
+autocmd filetype jade set number
+autocmd filetype jade set softtabstop=2
+autocmd filetype jade set tabstop=2
+autocmd filetype jade set shiftwidth=2
+autocmd filetype jade set expandtab
+
+autocmd filetype jade au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+
 " CoffeeScript
 autocmd filetype coffee set number
 autocmd filetype coffee set softtabstop=2
