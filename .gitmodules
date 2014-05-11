@@ -10,9 +10,6 @@
 [submodule ".vim/bundle/vim-addon-mw-utils"]
 	path = .vim/bundle/vim-addon-mw-utils
 	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
-[submodule ".vim/bundle/snipmate-snippets"]
-	path = .vim/bundle/snipmate-snippets
-	url = https://github.com/honza/snipmate-snippets.git
 [submodule ".vim/bundle/paredit.vim"]
 	path = .vim/bundle/paredit.vim
 	url = https://github.com/emezeske/paredit.vim.git
@@ -34,15 +31,9 @@
 [submodule ".vim/bundle/atea.vim"]
 	path = .vim/bundle/atea.vim
 	url = https://github.com/pkamenarsky/atea.vim
-[submodule ".vim/bundle/supertab"]
-	path = .vim/bundle/supertab
-	url = https://github.com/ervandew/supertab.git
 [submodule ".vim/bundle/bgcmd"]
 	path = .vim/bundle/bgcmd
 	url = git@github.com:pkamenarsky/vim-plugin-bgcmd.git
-[submodule ".vim/bundle/haskellmode-vim"]
-	path = .vim/bundle/haskellmode-vim
-	url = https://github.com/lukerandall/haskellmode-vim.git
 [submodule ".vim/bundle/vim-haskellConceal"]
 	path = .vim/bundle/vim-haskellConceal
 	url = https://github.com/Twinside/vim-haskellConceal.git
@@ -64,3 +55,33 @@
 [submodule ".vim/bundle/html-template-syntax"]
 	path = .vim/bundle/html-template-syntax
 	url = https://github.com/pbrisbin/html-template-syntax.git
+[submodule ".vim/bundle/vim-less"]
+	path = .vim/bundle/vim-less
+	url = https://github.com/groenewege/vim-less
+[submodule ".vim/bundle/vim-colors-solarized"]
+	path = .vim/bundle/vim-colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule ".vim/bundle/vim-latex-live-preview"]
+	path = .vim/bundle/vim-latex-live-preview
+	url = https://github.com/xuhdev/vim-latex-live-preview.git
+[submodule "/Users/phil/.vim/bundle/vimproc.vim"]
+	path = /Users/phil/.vim/bundle/vimproc.vim
+	url = https://github.com/Shougo/vimproc.vim.git
+[submodule ".vim/bundle/ghcmod-vim"]
+	path = .vim/bundle/ghcmod-vim
+	url = https://github.com/eagletmt/ghcmod-vim.git
+[submodule ".vim/bundle/neco-ghc"]
+	path = .vim/bundle/neco-ghc
+	url = https://github.com/ujihisa/neco-ghc.git
+[submodule ".vim/bundle/vim-json"]
+	path = .vim/bundle/vim-json
+	url = https://github.com/elzr/vim-json.git
+[submodule ".vim/bundle/ack.vim"]
+	path = .vim/bundle/ack.vim
+	url = https://github.com/mileszs/ack.vim.git
+[submodule ".vim/bundle/grep.vim"]
+	path = .vim/bundle/grep.vim
+	url = https://github.com/vim-scripts/grep.vim.git
+[submodule ".vim/bundle/vim-hdevtools"]
+	path = .vim/bundle/vim-hdevtools
+	url = https://github.com/bitc/vim-hdevtools.git

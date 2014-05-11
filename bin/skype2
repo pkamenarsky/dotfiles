@@ -1,0 +1,1 @@
+su skype2 -c "/Applications/Skype.app/Contents/MacOS/Skype > /dev/null 2> /dev/null &"

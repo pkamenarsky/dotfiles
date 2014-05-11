@@ -15,6 +15,7 @@ set ignorecase
 set backspace=indent,eol,start
 set guioptions-=T
 set guioptions-=r
+set guioptions-=e
 set linebreak
 set tabstop=4
 set shiftwidth=4
@@ -30,23 +31,27 @@ set noerrorbells
 set backupdir=~/.vim/backup
 set directory=~/.vim/swap
 
+set clipboard=unnamed
+
+set tags=./tags;
+
 set go-=L
 
 " Color scheme
 if has('gui_running')
-	set background=dark
-	colorscheme jellybeans
-	let g:jellybeans_use_lowcolor_black = 0
+	set background=light
+	colorscheme solarized
 	" set guifont=DejaVuSansMono:h14
 	set guifont=Monaco:h13
 else
 	set t_Co=256
-	set background=dark
-	colorscheme jellybeans
-	let g:jellybeans_use_lowcolor_black = 0
-	" colorscheme slate
+	set background=light
+	colorscheme solarized
 	" set background=dark
 endif
+
+" Disable Ex mode
+map Q <Nop>
 
 " Basic key mappings
 let maplocalleader='-'
@@ -66,9 +71,25 @@ map <down> <nop>
 map <left> <nop>
 map <right> <nop>
 
+" Save
+imap <F2> <C-o>;update<CR>
+nmap <F2> ;update<CR>
+
+" Quickfix
+map <F10> ;ccl<CR>
+map <F11> ;cprev<CR>
+map <F12> ;cnext<CR>
+
 " CtrlP
 let g:ctrlp_map = '<c-t>'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,node_modules,dist
 nmap <F5> ;CtrlPClearCache<CR>
+" nmap <C-f> ;CtrlPTag<CR>
+nmap <C-f> ;CtrlPTag<CR>
+
+" Sessions
+set ssop-=options    " do not store global and local values in a session
+set ssop-=folds      " do not store folds
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! %!sudo tee > /dev/null %
@@ -83,9 +104,7 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 
 map <C-\> ;vsplit<CR>
-map <C-]> ;split<CR>
-map <D-\> ;vsplit<CR>
-map <D-/> ;split<CR>
+map <C-_> ;split<CR>
 
 " Autocomplete with Ctrl-Space
 inoremap <Nul> <C-x><C-o>
@@ -94,8 +113,13 @@ inoremap <C-Space> <C-x><C-o>
 
 " Highlight word under cursor
 setl updatetime=500
-:highlight CursorWord guibg=#404040
-autocmd CursorHold * silent! exe printf('match CursorWord /\<%s\>/', expand('<cword>'))
+if has('gui_running')
+	highlight CursorWord guibg=#eee8d5
+else
+	highlight CursorWord guibg=#404040
+endif
+" autocmd CursorHold * silent! exe printf('match CursorWord /\<%s\>/', expand('<cword>'))
+autocmd CursorHold * exe printf('match CursorWord /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 
 " Text modifiers
 " modify selected text using combining diacritics
@@ -109,10 +133,6 @@ function! s:CombineSelection(line1, line2, cp)
   execute a:line1.','.a:line2.'s/\%V[^[:cntrl:]]/&'.char.'/ge'
 endfunction
 
-" Supertab
-let g:SuperTabDefaultCompletionType="<C-x><C-o>"
-inoremap <C-n> <C-x><C-n>
-
 " Yankring
 nnoremap <silent> <F3> :YRShow<CR>
 inoremap <silent> <F3> <ESC>:YRShow<cr>
@@ -123,8 +143,6 @@ autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 " VimClojure
 au BufNewFile,BufRead *.clj* set filetype=clojure
 au BufNewFile,BufRead *.clj*  call PareditInitBuffer()
-
-autocmd filetype clojure set number
 
 let vimclojure#WantNailgun=1
 
@@ -158,27 +176,56 @@ autocmd filetype clojure nmap <F5> ;update<CR><Plug>ClojureRequireFile<Plug>Cloj
 " set foldexpr=getline(v:lnum)!~'^diff\ '
 " set foldexpr=(getline(v:lnum)=~'^diff\ ')?'<1':'1'
 
-" Jade
-autocmd filetype jade set number
-autocmd filetype jade set softtabstop=2
-autocmd filetype jade set tabstop=2
-autocmd filetype jade set shiftwidth=2
-autocmd filetype jade set expandtab
-
-autocmd filetype jade au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+" HTML
+autocmd filetype html setlocal softtabstop=2
+autocmd filetype html setlocal tabstop=2
+autocmd filetype html setlocal shiftwidth=2
+autocmd filetype html setlocal expandtab
 
 " CoffeeScript
-autocmd filetype coffee set number
-autocmd filetype coffee set softtabstop=2
-autocmd filetype coffee set tabstop=2
-autocmd filetype coffee set shiftwidth=2
-autocmd filetype coffee set expandtab
+autocmd filetype coffee setlocal nonumber
+autocmd filetype coffee setlocal softtabstop=2
+autocmd filetype coffee setlocal tabstop=2
+autocmd filetype coffee setlocal shiftwidth=2
+autocmd filetype coffee setlocal expandtab
+autocmd filetype coffee setlocal colorcolumn=80
 
-autocmd filetype coffee au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+" json
+command! PprintJson %!python -m json.tool
+
+" Ruby
+autocmd filetype ruby setlocal nonumber
+autocmd filetype ruby setlocal softtabstop=2
+autocmd filetype ruby setlocal tabstop=2
+autocmd filetype ruby setlocal shiftwidth=2
+autocmd filetype ruby setlocal expandtab
+autocmd filetype ruby setlocal colorcolumn=80
+
+" Handlebars
+autocmd filetype hbs setlocal nonumber
+autocmd filetype hbs setlocal softtabstop=2
+autocmd filetype hbs setlocal tabstop=2
+autocmd filetype hbs setlocal shiftwidth=2
+autocmd filetype hbs setlocal expandtab
+autocmd filetype hbs setlocal colorcolumn=80
+
+" less
+autocmd filetype less setlocal nonumber
+autocmd filetype less setlocal softtabstop=2
+autocmd filetype less setlocal tabstop=2
+autocmd filetype less setlocal shiftwidth=2
+autocmd filetype less setlocal expandtab
+autocmd filetype less setlocal colorcolumn=80
+
+" JS
+autocmd filetype javascript setlocal nonumber
+autocmd filetype javascript setlocal softtabstop=2
+autocmd filetype javascript setlocal tabstop=2
+autocmd filetype javascript setlocal shiftwidth=2
+autocmd filetype javascript setlocal expandtab
+autocmd filetype javascript setlocal colorcolumn=80
 
 " Erlang
-autocmd filetype erlang set number
-
 autocmd filetype erlang let g:erlangManPath="/usr/local/lib/erlang/man"
 autocmd filetype erlang let g:erlangWranglerPath="/usr/local/share/wrangler/"
 
@@ -191,32 +238,99 @@ autocmd filetype erlang noremap <M-F5> ;! cd .. && ./rebar compile<CR><CR>
 autocmd filetype erlang nmap <F7> ;update<CR>;Shell make test<CR>
 
 " Haskell
-au BufEnter *.hs compiler ghc
-let g:haddock_browser = "open"
-let g:haddock_browser_callformat = "%s %s"
-let g:ghc = "/usr/bin/ghc"
+" au BufEnter *.hs compiler ghc
+au filetype haskell let g:haddock_browser = "open"
+au filetype haskell let g:haddock_browser_callformat = "%s %s"
+au filetype haskell let g:ghc = "/usr/bin/ghc"
+au filetype haskell let g:necoghc_enable_detailed_browse = 1
 
-map <LocalLeader>r :GHCi 
+au filetype haskell let Grep_Default_Options = '-w'
+au filetype haskell let Grep_Skip_Dirs = 'build cabal-dev dist src-exe doc .git .hg'
+au filetype haskell let Grep_Default_Filelist = '*.hs'
+
+au filetype haskell map <LocalLeader>t :GhcModType<CR>
+au filetype haskell map <LocalLeader>c :GhcModTypeClear<CR>
+au filetype haskell setlocal omnifunc=necoghc#omnifunc
+
+au filetype haskell map <silent> <LocalLeader>s :Rgrep<CR><CR><C-u>.<CR><CR><CR>
+au filetype haskell map <silent> <LocalLeader>i :Rgrep<CR><C-u>instance .*<C-r><C-w><CR><C-u>.<CR><CR>
+
+au BufWritePost *.hs GhcModCheckAndLintAsync
+au BufWritePost *.hs :silent !hasktags --ignore-close-implementation --ctags .; sort tags -o tags &
 
 au BufNewFile,BufRead *.hs map <buffer> <F1> :Hoogle
 au BufNewFile,BufRead *.hs map <buffer> <C-F1> :HoogleClose<CR>
 au BufNewFile,BufRead *.hs map <buffer> <S-F1> :HoogleLine<CR>
 
-autocmd filetype haskell setlocal expandtab
-autocmd filetype haskell setlocal tabstop=4
-autocmd filetype haskell setlocal shiftwidth=4
-autocmd filetype haskell setlocal textwidth=79
+au filetype haskell setlocal softtabstop=2
+au filetype haskell setlocal tabstop=2
+au filetype haskell setlocal shiftwidth=2
+au filetype haskell setlocal expandtab
+au filetype haskell setlocal colorcolumn=80
+
+" match parens correctly
+au filetype haskell setlocal cpoptions+=M
+
+function! Myinput(p)
+   if version >=602
+      call inputsave()
+   endif
+      let x=input(a:p)
+   if version >=602
+      call inputrestore()
+   endif
+      return x
+endfunction
+
+function! Haskell_refac_msg(dialog,msg)
+  let visible = bufwinnr('^refac$')
+  if bufexists('^refac$')
+    set switchbuf+=useopen
+    sbuf ^refac$
+    call append(line('$'),a:msg)
+    if visible==-1
+      hide
+    else
+      sbuf %
+    endif
+  else
+    hide new refac
+    set bufhidden=hide
+    set buftype=nofile
+    set noswapfile
+    call append(line('$'),a:msg)
+    hide
+  endif
+ if a:dialog
+   call confirm(a:msg)
+ endif
+endfunction
+
+function! HaskellRename()
+	let fileName = expand("%:p")
+	let name = Myinput("New name? ")
+	let line = line(".")
+	let column = col(".")
+
+	let @r=''
+    redir @r
+
+	silent execute ":!ghc-hare rename ".fileName." ".name." ".line." ".column
+
+	redir END
+	call Haskell_refac_msg(0,@r)
+endfunction
+
+" pretty print Show instances
+command! PprintShow %!ppsh
 
 " Python
+autocmd filetype python setlocal nonumber
 autocmd filetype python setlocal expandtab
 autocmd filetype python setlocal tabstop=2
 autocmd filetype python setlocal shiftwidth=2
-autocmd filetype python setlocal textwidth=79
+autocmd filetype python setlocal colorcolumn=80
 autocmd filetype python set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-
-" CodeReview
-let g:CodeReviewer_reviewer="pk"
-let g:CodeReviewer_reviewFile="review.rev"
 
 " Google translate
 let g:goog_user_conf = { 'langpair': 'de|en', 'v_key': 'T' }
@@ -256,4 +370,3 @@ endfunction
 
 command! -complete=shellcmd -nargs=* -bang Shell call s:ExecuteInShell(<q-args>, '<bang>')
 cabbrev shell Shell
-

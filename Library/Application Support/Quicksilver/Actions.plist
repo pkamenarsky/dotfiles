@@ -90,6 +90,8 @@
 		<true/>
 		<key>QSCLTermShowManPageAction</key>
 		<true/>
+		<key>QSCatalogAddEntryAction</key>
+		<false/>
 		<key>QSCatalogEntryRescanAction</key>
 		<true/>
 		<key>QSCatalogEntryShowAction</key>
@@ -269,6 +271,8 @@
 		<true/>
 		<key>QSCLTermShowManPageAction</key>
 		<true/>
+		<key>QSCatalogAddEntryAction</key>
+		<false/>
 		<key>QSCatalogEntryRescanAction</key>
 		<true/>
 		<key>QSCatalogEntryShowAction</key>
@@ -448,6 +452,8 @@
 		<real>0.0</real>
 		<key>QSCLTermShowManPageAction</key>
 		<real>0.0</real>
+		<key>QSCatalogAddEntryAction</key>
+		<real>-0.050000000000000003</real>
 		<key>QSCatalogEntryRescanAction</key>
 		<real>2</real>
 		<key>QSCatalogEntryShowAction</key>
@@ -615,6 +621,7 @@
 		<string>QSiTunesRevealItem</string>
 		<string>QSiTunesPSPlayAction</string>
 		<string>QSiTunesAddToPlaylistAction</string>
+		<string>QSCatalogAddEntryAction</string>
 		<string>QSObjectAssignMnemonic</string>
 		<string>FileGetURLAction</string>
 		<string>PasteboardPasteAction</string>
