@@ -58,6 +58,7 @@ export PATH=$PATH:/Applications/Lynxlet.app/Contents/Resources/lynx/bin
 
 # cabal executables
 export PATH=~/.cabal/bin:$PATH
+export PATH=~/Library/Haskell/bin:$PATH
 
 # npm
 export PATH=$PATH:/usr/local/share/npm/bin
