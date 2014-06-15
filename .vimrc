@@ -243,6 +243,7 @@ au filetype haskell let g:haddock_browser = "open"
 au filetype haskell let g:haddock_browser_callformat = "%s %s"
 au filetype haskell let g:ghc = "/usr/bin/ghc"
 au filetype haskell let g:necoghc_enable_detailed_browse = 1
+au filetype haskell let g:ghcmod_ghc_options = ['-cpp']
 
 au filetype haskell let Grep_Default_Options = '-w'
 au filetype haskell let Grep_Skip_Dirs = 'build cabal-dev dist src-exe doc .git .hg'
