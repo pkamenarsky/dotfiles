@@ -249,6 +249,14 @@ au filetype haskell let Grep_Default_Options = '-w'
 au filetype haskell let Grep_Skip_Dirs = 'build cabal-dev dist src-exe doc .git .hg'
 au filetype haskell let Grep_Default_Filelist = '*.hs'
 
+au filetype haskell inoremap OR <C-v>u2228
+au filetype haskell inoremap AND <C-v>u2227
+au filetype haskell inoremap UNION <C-v>u222a
+au filetype haskell inoremap INTERSECT <C-v>u2229
+au filetype haskell inoremap ELEM <C-v>u2208
+au filetype haskell inoremap SUM <C-v>u2211
+au filetype haskell inoremap PROD <C-v>u2210
+
 au filetype haskell map <LocalLeader>t :GhcModType<CR>
 au filetype haskell map <LocalLeader>c :GhcModTypeClear<CR>
 au filetype haskell setlocal omnifunc=necoghc#omnifunc
