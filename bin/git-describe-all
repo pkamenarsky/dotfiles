@@ -1,0 +1,3 @@
+git log --pretty=format:"%h" -300 | while read p; do
+  echo "$p - `git describe --tags $p 2> /dev/null`"
+done
