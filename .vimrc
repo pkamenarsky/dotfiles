@@ -267,7 +267,8 @@ au filetype haskell map <silent> <LocalLeader>i :Rgrep<CR><C-u>instance .*<C-r><
 au filetype haskell map <silent> <LocalLeader>l GhcModLint
 
 " au BufWritePost *.hs GhcModCheckAndLintAsync
-au BufWritePost *.hs :silent !(hasktags --ignore-close-implementation --ctags . &) ; (sort tags -o tags &)
+au BufWritePost *.hs :silent !hasktags --ignore-close-implementation --ctags . &
+" au BufWritePost *.hs :silent !(hasktags --ignore-close-implementation --ctags . &) ; (sort tags -o tags &)
 
 au BufNewFile,BufRead *.hs map <buffer> <F1> :Hoogle
 au BufNewFile,BufRead *.hs map <buffer> <C-F1> :HoogleClose<CR>
