@@ -264,8 +264,10 @@ au filetype haskell setlocal omnifunc=necoghc#omnifunc
 au filetype haskell map <silent> <LocalLeader>s :Rgrep<CR><CR><C-u>.<CR><CR><CR>
 au filetype haskell map <silent> <LocalLeader>i :Rgrep<CR><C-u>instance .*<C-r><C-w><CR><C-u>.<CR><CR>
 
-au BufWritePost *.hs GhcModCheckAndLintAsync
-au BufWritePost *.hs :silent !hasktags --ignore-close-implementation --ctags .; sort tags -o tags &
+au filetype haskell map <silent> <LocalLeader>l GhcModLint
+
+" au BufWritePost *.hs GhcModCheckAndLintAsync
+au BufWritePost *.hs :silent !(hasktags --ignore-close-implementation --ctags . &) ; (sort tags -o tags &)
 
 au BufNewFile,BufRead *.hs map <buffer> <F1> :Hoogle
 au BufNewFile,BufRead *.hs map <buffer> <C-F1> :HoogleClose<CR>
