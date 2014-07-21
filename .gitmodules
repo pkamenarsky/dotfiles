@@ -82,3 +82,6 @@
 [submodule ".vim/bundle/vimproc.vim"]
 	path = .vim/bundle/vimproc.vim
 	url = https://github.com/Shougo/vimproc.vim.git
+[submodule ".vim/bundle/csv.vim"]
+	path = .vim/bundle/csv.vim
+	url = https://github.com/chrisbra/csv.vim.git

@@ -4,7 +4,7 @@ alias llr="ls -ltra"
 alias cpr="cp -Rv"
 
 alias ci="cabal install"
-alias cip="cabal install --enable-executable-profiling -fprof-auto -fprof-auto-calls"
+alias cip="cabal install --enable-executable-profiling --enable-library-profiling -fprof-auto --ghc-option=-fprof-auto -fprof-auto-calls --ghc-option=-fprof-auto-calls"
 alias cdoc="cabal haddock --hoogle; cp dist/doc/html/`basename $PWD`/`basename $PWD`.txt ."
 
 alias g="git"
