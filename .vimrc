@@ -37,6 +37,9 @@ set tags=./tags;
 
 set go-=L
 
+" Trailing spaces
+set list listchars=tab:»·,trail:·
+
 " Color scheme
 if has('gui_running')
 	set background=light
