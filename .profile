@@ -9,7 +9,8 @@ alias cimp="cabal install --enable-executable-profiling -fprof-auto-calls --ghc-
 alias cimp2="cabal install --enable-executable-profiling"
 alias cdoc="cabal haddock --hoogle; cp dist/doc/html/`basename $PWD`/`basename $PWD`.txt ."
 
-alias g="git"
+alias g='grep --colour -Rnif /dev/stdin src <<<'
+
 alias ga="git add"
 alias gs="git status"
 alias gc="git commit -a -m"
