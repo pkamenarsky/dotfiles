@@ -14,6 +14,7 @@ alias g='grep --colour -Rnif /dev/stdin src <<<'
 alias ga="git add"
 alias gs="git status"
 alias gc="git commit -a -m"
+alias gco="git checkout"
 alias gp="git push"
 alias gpu="git pull"
 alias gl="git log --pretty=format:"%h%x09%an%x09%ad%x09%s%d""
