@@ -1,3 +1,5 @@
+set shell=/bin/sh
+
 " OS
 let OS = substitute(system('uname'), "\n", "", "")
 
@@ -141,7 +143,14 @@ nnoremap <silent> <F3> :YRShow<CR>
 inoremap <silent> <F3> <ESC>:YRShow<cr>
 
 " Java
+au filetype java setlocal softtabstop=4
+au filetype java setlocal tabstop=4
+au filetype java setlocal shiftwidth=4
+au filetype java setlocal expandtab
+au filetype java setlocal colorcolumn=80
+
 autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+autocmd filetype java nmap <F5> ;!javac Solution.java && java Solution<CR>
 
 " VimClojure
 au BufNewFile,BufRead *.clj* set filetype=clojure
@@ -338,6 +347,7 @@ endfunction
 
 " pretty print Show instances
 command! PprintShow %!ppsh
+command! PprintShow2 %!hsformat
 
 " Python
 autocmd filetype python setlocal nonumber
