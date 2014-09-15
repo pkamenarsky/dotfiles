@@ -42,6 +42,11 @@ set go-=L
 " Trailing spaces
 set list listchars=tab:»·,trail:·
 
+set softtabstop=2
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
 " Color scheme
 if has('gui_running')
 	set background=light
