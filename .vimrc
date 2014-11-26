@@ -285,6 +285,7 @@ au filetype haskell map <silent> <LocalLeader>l GhcModLint
 
 " au BufWritePost *.hs GhcModCheckAndLintAsync
 au BufWritePost *.hs :silent !hasktags --ignore-close-implementation --ctags . &
+au BufWritePost *.hs :silent call GhciReload()
 " au BufWritePost *.hs :silent !(hasktags --ignore-close-implementation --ctags . &) ; (sort tags -o tags &)
 
 au BufNewFile,BufRead *.hs map <buffer> <F1> :Hoogle
@@ -348,6 +349,13 @@ function! HaskellRename()
 
 	redir END
 	call Haskell_refac_msg(0,@r)
+endfunction
+
+function! GhciReload()
+  call system ("tmux send-keys -t ghci :r &")
+  call system ("tmux send-keys -t ghci Enter &")
+  call system ("tmux send-keys -t ghci runServer &")
+  call system ("tmux send-keys -t ghci Enter &")
 endfunction
 
 " pretty print Show instances

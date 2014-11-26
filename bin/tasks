@@ -19,7 +19,7 @@ if [[ `pwd` =~ .*/(.*) ]]; then
 
 	if [[ $1 == -o ]]; then
 		touch $tasks
-		open $tasks
+		vim $tasks
 	fi
 fi
 
