@@ -352,10 +352,9 @@ function! HaskellRename()
 endfunction
 
 function! GhciReload()
-  call system ("tmux send-keys -t ghci :r &")
-  call system ("tmux send-keys -t ghci Enter &")
-  call system ("tmux send-keys -t ghci runServer &")
-  call system ("tmux send-keys -t ghci Enter &")
+  call system ("tmux send-keys -t generic-ghci :r Enter &")
+  call system ("tmux send-keys -t ghci :r Enter &")
+  call system ("tmux send-keys -t ghci runServer Enter &")
 endfunction
 
 " pretty print Show instances

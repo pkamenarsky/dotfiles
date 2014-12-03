@@ -128,3 +128,6 @@ export DYLD_LIBRARY_PATH=$MAGICK_HOME/lib/
 export PATH=$PATH:/Applications/Lynxlet.app/Contents/Resources/lynx/bin
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
