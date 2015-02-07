@@ -68,6 +68,8 @@ export PATH=~/Library/Haskell/bin:$PATH
 export PATH=$PATH:/usr/local/share/npm/bin
 
 # Android
+export ANDROID_HOME=~/Projects/android-sdk-macosx
+
 export PATH=$PATH:~/Projects/android-sdk-macosx/tools
 export PATH=$PATH:~/Projects/android-sdk-macosx/platform-tools
 
