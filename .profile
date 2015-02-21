@@ -41,6 +41,8 @@ export PATH=$CLOJURE_HOME:$PATH
 export CLOJURESCRIPT_HOME=$HOME/Projects/clojurescript/
 export PATH=$CLOJURESCRIPT_HOME/bin:$PATH
 
+export VIMCLOJURE_SERVER_JAR="$HOME/bin/vimclojure/server-2.3.6.jar"
+
 # old less version
 export PATH=$PATH:/Applications/Less.app/Contents/Resources/engines/bin
 

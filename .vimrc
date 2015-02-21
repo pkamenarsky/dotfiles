@@ -351,6 +351,14 @@ function! HaskellRename()
 	call Haskell_refac_msg(0,@r)
 endfunction
 
+nmap <F7> ;call SyncOrg()<CR>
+
+function! SyncOrg()
+  call system ("atea --push " . bufname("%"))
+  call system ("atea --pull " . bufname("%"))
+  :edit!
+endfunction
+
 function! GhciReload()
   call system ("tmux send-keys -t generic-ghci :r Enter &")
   call system ("tmux send-keys -t ghci :r Enter &")
