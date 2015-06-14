@@ -113,6 +113,12 @@ map <F12> ;cnext<CR>
 map <Leader> <Plug>(easymotion-prefix)
 let g:EasyMotion_smartcase = 1
 
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+
 " CtrlP
 let g:ctrlp_map = '<c-t>'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,node_modules,dist
