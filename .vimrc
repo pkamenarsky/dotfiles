@@ -65,6 +65,7 @@ map Q <Nop>
 
 " Basic key mappings
 let maplocalleader='-'
+let mapleader = "\<Space>"
 
 nnoremap j gj
 nnoremap k gk
@@ -81,14 +82,36 @@ map <down> <nop>
 map <left> <nop>
 map <right> <nop>
 
-" Save
-imap <F2> <C-o>;update<CR>
-nmap <F2> ;update<CR>
+" Automatically jump to end of text you pasted
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
+
+" Hit Enter to go to end of file
+nnoremap <CR> G
+
+" Hit Backspace to go to beginning of file
+nnoremap <BS> gg
+
+" Quickly select text you just pasted
+noremap gV `[v`]
+
+" Stop that stupid window from popping up
+map q: :q
+
+" Load / save
+nnoremap <Leader>o :CtrlP<CR>
+nnoremap <Leader>z :w<CR>
 
 " Quickfix
 map <F10> ;ccl<CR>
 map <F11> ;cprev<CR>
 map <F12> ;cnext<CR>
+
+" EasyMotion
+" let g:EasyMotion_do_mapping = 0
+map <Leader> <Plug>(easymotion-prefix)
+let g:EasyMotion_smartcase = 1
 
 " CtrlP
 let g:ctrlp_map = '<c-t>'
@@ -260,7 +283,7 @@ au filetype haskell let g:haddock_browser = "open"
 au filetype haskell let g:haddock_browser_callformat = "%s %s"
 au filetype haskell let g:ghc = "/usr/bin/ghc"
 au filetype haskell let g:necoghc_enable_detailed_browse = 1
-au filetype haskell let g:ghcmod_ghc_options = ['-cpp']
+au filetype haskell let g:ghcmod_ghc_options = ['-optP cpphs']
 
 au filetype haskell let Grep_Default_Options = '-w'
 au filetype haskell let Grep_Skip_Dirs = 'build cabal-dev dist src-exe doc .git .hg'
