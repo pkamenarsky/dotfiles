@@ -1,7 +1,7 @@
 loadplugins
 
 " ui
-set guioptions=
+set guioptions=""
 
 " Disable smooth scroll
 set scrollsteps=1
