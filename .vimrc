@@ -312,6 +312,7 @@ au filetype haskell inoremap ^arrout ↖
 au filetype haskell inoremap ^arrin ↪
 au filetype haskell inoremap ^arr →
 au filetype haskell inoremap ^eq ≈
+au filetype haskell inoremap ^neq ≠
 au filetype haskell inoremap ^... …
 
 au filetype haskell map <LocalLeader>t :GhcModType<CR>
