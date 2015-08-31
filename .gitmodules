@@ -88,3 +88,6 @@
 [submodule "/Users/phil/.vim/bundle/vim-easymotion"]
 	path = /Users/phil/.vim/bundle/vim-easymotion
 	url = https://github.com/Lokaltog/vim-easymotion
+[submodule "/Users/phil/.vim/bundle/elm.vim"]
+	path = /Users/phil/.vim/bundle/elm.vim
+	url = git@github.com:lambdatoast/elm.vim.git
