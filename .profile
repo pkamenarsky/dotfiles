@@ -29,6 +29,9 @@ alias hpu="hg pull"
 alias v="vim"
 alias vv="mvim"
 
+# npm
+alias npm-exec='PATH=$(npm bin):$PATH'
+
 # Hoogle
 alias hh="hoogle --color --count=30 +t4a-offer"
 

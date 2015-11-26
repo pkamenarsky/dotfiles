@@ -339,6 +339,15 @@ au filetype haskell setlocal shiftwidth=2
 au filetype haskell setlocal expandtab
 au filetype haskell setlocal colorcolumn=80
 
+" Elm
+au filetype elm let g:elm_jump_to_error = 1
+au filetype elm let g:elm_make_output_file = "elm.js"
+au filetype elm let g:elm_make_show_warnings = 0
+au filetype elm let g:elm_browser_command = ""
+au filetype elm let g:elm_detailed_complete = 0
+
+au BufWritePost *.elm ElmMake
+
 " match parens correctly
 au filetype haskell setlocal cpoptions+=M
 
