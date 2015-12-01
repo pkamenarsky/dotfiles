@@ -121,7 +121,7 @@ map  N <Plug>(easymotion-prev)
 
 " CtrlP
 let g:ctrlp_map = '<c-t>'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,node_modules,dist
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,node_modules,dist,deps,build,cabal-dev,src-exe,.git,.hg
 nmap <F5> ;CtrlPClearCache<CR>
 " nmap <C-f> ;CtrlPTag<CR>
 nmap <C-f> ;CtrlPTag<CR>
