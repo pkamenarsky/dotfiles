@@ -49,15 +49,14 @@ set expandtab
 
 " Color scheme
 if has('gui_running')
-	set background=light
-	colorscheme solarized
-	" set guifont=DejaVuSansMono:h14
-	set guifont=Hack:h13
+  set background=dark
+  colorscheme solarized
+  " set guifont=DejaVuSansMono:h14
+  set guifont=Hack:h13
 else
-	set t_Co=256
-	set background=light
-	colorscheme solarized
-	" set background=dark
+  set t_Co=256
+  set background=dark
+  colorscheme solarized
 endif
 
 " Disable Ex mode

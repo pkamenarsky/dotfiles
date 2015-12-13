@@ -13,21 +13,25 @@
 [submodule ".vim/bundle/paredit.vim"]
 	path = .vim/bundle/paredit.vim
 	url = https://github.com/emezeske/paredit.vim.git
+  ignore = dirty
 [submodule ".vim/bundle/jellybeans.vim"]
 	path = .vim/bundle/jellybeans.vim
 	url = git@github.com:pkamenarsky/jellybeans.vim.git
 [submodule ".vim/bundle/vim-markdown-preview"]
 	path = .vim/bundle/vim-markdown-preview
 	url = https://github.com/henrik/vim-markdown-preview
+  ignore = dirty
 [submodule ".vim/bundle/vimclojure-2"]
 	path = .vim/bundle/vimclojure-2
 	url = https://github.com/vim-scripts/VimClojure
+  ignore = dirty
 [submodule ".vim/bundle/vimerl"]
 	path = .vim/bundle/vimerl
 	url = https://github.com/jimenezrick/vimerl
 [submodule ".vim/bundle/yankring"]
 	path = .vim/bundle/yankring
 	url = https://github.com/vim-scripts/YankRing.vim
+  ignore = dirty
 [submodule ".vim/bundle/atea.vim"]
 	path = .vim/bundle/atea.vim
 	url = https://github.com/pkamenarsky/atea.vim
@@ -37,6 +41,7 @@
 [submodule ".vim/bundle/vim-hoogle"]
 	path = .vim/bundle/vim-hoogle
 	url = https://github.com/Twinside/vim-hoogle.git
+  ignore = dirty
 [submodule ".vim/bundle/vim-translator"]
 	path = .vim/bundle/vim-translator
 	url = https://github.com/maksimr/vim-translator.git
@@ -61,6 +66,7 @@
 [submodule ".vim/bundle/vim-latex-live-preview"]
 	path = .vim/bundle/vim-latex-live-preview
 	url = https://github.com/xuhdev/vim-latex-live-preview.git
+  ignore = dirty
 [submodule ".vim/bundle/neco-ghc"]
 	path = .vim/bundle/neco-ghc
 	url = https://github.com/ujihisa/neco-ghc.git
@@ -79,12 +85,14 @@
 [submodule ".vim/bundle/vimproc.vim"]
 	path = .vim/bundle/vimproc.vim
 	url = https://github.com/Shougo/vimproc.vim.git
+  ignore = dirty
 [submodule ".vim/bundle/csv.vim"]
 	path = .vim/bundle/csv.vim
 	url = https://github.com/chrisbra/csv.vim.git
 [submodule ".vim/bundle/vim-leiningen"]
 	path = .vim/bundle/vim-leiningen
 	url = git://github.com/tpope/vim-leiningen.git
+  ignore = dirty
 [submodule "/Users/phil/.vim/bundle/vim-easymotion"]
 	path = /Users/phil/.vim/bundle/vim-easymotion
 	url = https://github.com/Lokaltog/vim-easymotion
