@@ -98,8 +98,12 @@ noremap gV `[v`]
 " Stop that stupid window from popping up
 map q: :q
 
+nnoremap <Leader>i :tabnext<CR>
+nnoremap <Leader>o :tabprev<CR>
+nnoremap <Leader>t :tabnew<CR>
+
 " Load / save
-nnoremap <Leader>o :CtrlP<CR>
+" nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>z :w<CR>
 
 " Quickfix

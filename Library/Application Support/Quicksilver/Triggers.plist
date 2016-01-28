@@ -185,18 +185,6 @@
 		</dict>
 		<dict>
 			<key>ID</key>
-			<string>QSiTunesNextSongTrigger</string>
-			<key>enabled</key>
-			<false/>
-			<key>name</key>
-			<string>Next Song</string>
-			<key>set</key>
-			<string>iTunes</string>
-			<key>type</key>
-			<string>QSHotKeyTrigger</string>
-		</dict>
-		<dict>
-			<key>ID</key>
 			<string>QSiTunesSetRating1</string>
 			<key>enabled</key>
 			<false/>
@@ -209,11 +197,11 @@
 		</dict>
 		<dict>
 			<key>ID</key>
-			<string>QSiTunesSearchAlbums</string>
+			<string>QSiTunesNextSongTrigger</string>
 			<key>enabled</key>
 			<false/>
 			<key>name</key>
-			<string>Search Albums</string>
+			<string>Next Song</string>
 			<key>set</key>
 			<string>iTunes</string>
 			<key>type</key>
@@ -233,6 +221,39 @@
 			<true/>
 			<key>keyCode</key>
 			<integer>11</integer>
+			<key>modifiers</key>
+			<integer>1310985</integer>
+			<key>onPress</key>
+			<true/>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>QSiTunesSearchAlbums</string>
+			<key>enabled</key>
+			<false/>
+			<key>name</key>
+			<string>Search Albums</string>
+			<key>set</key>
+			<string>iTunes</string>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>7E478308-3D91-4F8C-96AF-957E8DCC45B9</string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>FileOpenAction</string>
+				<key>directID</key>
+				<string>/Applications/Google Chrome.app</string>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>13</integer>
 			<key>modifiers</key>
 			<integer>1310985</integer>
 			<key>onPress</key>
@@ -387,27 +408,6 @@
 			<true/>
 			<key>keyCode</key>
 			<integer>34</integer>
-			<key>modifiers</key>
-			<integer>1310985</integer>
-			<key>onPress</key>
-			<true/>
-			<key>type</key>
-			<string>QSHotKeyTrigger</string>
-		</dict>
-		<dict>
-			<key>ID</key>
-			<string>7E478308-3D91-4F8C-96AF-957E8DCC45B9</string>
-			<key>command</key>
-			<dict>
-				<key>actionID</key>
-				<string>FileOpenAction</string>
-				<key>directID</key>
-				<string>/Applications/Google Chrome.app</string>
-			</dict>
-			<key>enabled</key>
-			<true/>
-			<key>keyCode</key>
-			<integer>13</integer>
 			<key>modifiers</key>
 			<integer>1310985</integer>
 			<key>onPress</key>
