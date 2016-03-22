@@ -112,3 +112,5 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_20.jdk/Contents/Home
 # /usr/local/bin
 export PATH=/usr/local/bin:$PATH
 
+# .local/bin
+export PATH=~/.local/bin:$PATH
