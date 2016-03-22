@@ -1,5 +1,6 @@
 #!/bin/bash
-tmux new-session -d -s generic-ghci
+# tmux new-session -d -s generic-ghci
 # tmux send-keys -t ghci "cabal configure -fdevel -flive" C-m
-tmux send-keys -t generic-ghci "cabal repl" C-m
-tmux attach-session -t generic-ghci
+# tmux send-keys -t generic-ghci "cabal repl" C-m
+# tmux attach-session -t generic-ghci
+ghcid -c "stack repl"
