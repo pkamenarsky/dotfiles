@@ -102,3 +102,9 @@
 [submodule ".vim/bundle/purescript-vim"]
 	path = .vim/bundle/purescript-vim
 	url = https://github.com/raichoo/purescript-vim.git
+[submodule ".vim/bundle/psc-ide-vim"]
+	path = .vim/bundle/psc-ide-vim
+	url = https://github.com/FrigoEU/psc-ide-vim.git
+[submodule ".vim/bundle/syntastic"]
+	path = .vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
