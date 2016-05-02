@@ -342,6 +342,17 @@ au filetype haskell setlocal shiftwidth=2
 au filetype haskell setlocal expandtab
 au filetype haskell setlocal colorcolumn=80
 
+" Purescript
+au FileType purescript nmap <LocalLeader>t :PSCIDEtype<CR>
+au FileType purescript nmap <LocalLeader>s :PSCIDEapplySuggestion<CR>
+au FileType purescript nmap <LocalLeader>a :PSCIDEaddTypeAnnotation<CR>
+au FileType purescript nmap <LocalLeader>i :PSCIDEimportIdentifier<CR>
+au FileType purescript nmap <LocalLeader>r :PSCIDEload<CR>
+au FileType purescript nmap <LocalLeader>p :PSCIDEpursuit<CR>
+au FileType purescript nmap <LocalLeader>c :PSCIDEcaseSplit<CR>
+au FileType purescript nmap <LocalLeader>qd :PSCIDEremoveImportQualifications<CR>
+au FileType purescript nmap <LocalLeader>qa :PSCIDEaddImportQualifications<CR>
+
 " Elm
 au filetype elm let g:elm_jump_to_error = 1
 au filetype elm let g:elm_make_output_file = "elm.js"
