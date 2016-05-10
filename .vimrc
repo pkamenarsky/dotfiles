@@ -52,7 +52,8 @@ if has('gui_running')
   set background=dark
   colorscheme solarized
   " set guifont=DejaVuSansMono:h14
-  set guifont=Hack:h13
+  " set guifont=DejaVuSansMono:h14
+  set guifont=Source\ Code\ Pro:h13
 else
   set t_Co=256
   set background=dark
