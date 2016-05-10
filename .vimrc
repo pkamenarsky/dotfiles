@@ -55,7 +55,7 @@ if has('gui_running')
   set guifont=Hack:h13
 else
   set t_Co=256
-  set background=light
+  set background=dark
   colorscheme solarized
 endif
 

@@ -79,9 +79,6 @@
 [submodule ".vim/bundle/grep.vim"]
 	path = .vim/bundle/grep.vim
 	url = https://github.com/vim-scripts/grep.vim.git
-[submodule ".vim/bundle/vim-hdevtools"]
-	path = .vim/bundle/vim-hdevtools
-	url = https://github.com/bitc/vim-hdevtools.git
 [submodule ".vim/bundle/vimproc.vim"]
 	path = .vim/bundle/vimproc.vim
 	url = https://github.com/Shougo/vimproc.vim.git
