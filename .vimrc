@@ -83,8 +83,8 @@ map <left> <nop>
 map <right> <nop>
 
 " Scroll left and right
-map <C-L> 20zl " Scroll 20 characters to the right
-map <C-H> 20zh " Scroll 20 characters to the left
+map L 20zl
+map H 20zh
 
 " Automatically jump to end of text you pasted
 vnoremap <silent> y y`]
