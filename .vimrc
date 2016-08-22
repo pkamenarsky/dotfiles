@@ -50,7 +50,7 @@ set expandtab
 " Color scheme
 if has('gui_running')
   set background=dark
-  colorscheme solarized
+  colorscheme zenburn
   " set guifont=DejaVuSansMono:h14
   " set guifont=DejaVuSansMono:h14
   set guifont=Source\ Code\ Pro:h13
@@ -147,9 +147,10 @@ map <C-_> ;split<CR>
 " Highlight word under cursor
 setl updatetime=500
 if has('gui_running')
-	highlight CursorWord guibg=#eee8d5
+  " highlight CursorWord guibg=#eee8d5
+  highlight CursorWord guibg=#404040
 else
-	highlight CursorWord guibg=#404040
+  highlight CursorWord guibg=#404040
 endif
 " autocmd CursorHold * silent! exe printf('match CursorWord /\<%s\>/', expand('<cword>'))
 autocmd CursorHold * exe printf('match CursorWord /\V\<%s\>/', escape(expand('<cword>'), '/\'))
