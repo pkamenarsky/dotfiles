@@ -4,28 +4,29 @@
 
 (package-initialize)
 
-;; ace-mode
-(add-to-list 'load-path "/full/path/where/ace-jump-mode.el/in/")
-(autoload
-  'ace-jump-mode
-  "ace-jump-mode"
-  "Emacs quick move minor mode"
-  t)
-
-(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
-
-;; ?
-(put 'upcase-region 'disabled nil)
-
 ;; zenburn theme
 (package-install 'zenburn-theme)
 (load-theme 'zenburn t)
 
+;; ?
+(put 'upcase-region 'disabled nil)
+
+;; avy
+(package-install 'avy)
+(require 'avy)
+
+(global-set-key (kbd "M-g w") 'avy-goto-word-1)
+
 ;; evil
 (package-install 'evil)
 (setq evil-want-C-u-scroll t)
+;; (setq evil-search-module 'evil-search)
 (require 'evil)
 (evil-mode 1)
+
+;; projectile
+(package-install 'projectile)
+(require 'projectile)
 
 ;; intero
 (package-install 'intero)
