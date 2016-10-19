@@ -42,6 +42,9 @@
 (global-evil-leader-mode)
 (evil-leader/set-leader "<SPC>")
 
+(evil-leader/set-key "n" 'next-error)
+(evil-leader/set-key "p" 'previous-error)
+
 ;; magit
 (package-install 'magit)
 
