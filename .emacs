@@ -10,6 +10,8 @@
 (package-install 'zenburn-theme)
 (load-theme 'zenburn t)
 
+(set-default-font "Source Code Pro 13")
+
 ;; ?
 (put 'upcase-region 'disabled nil)
 
