@@ -21,6 +21,11 @@
 
 (global-set-key (kbd "M-g w") 'avy-goto-word-1)
 
+;; ido
+;; (setq ido-enable-flex-matching t)
+;; (setq ido-everywhere t)
+;; (ido-mode 1)
+
 ;; evil
 (package-install 'evil)
 (setq evil-want-C-u-scroll t)
@@ -46,6 +51,7 @@
 
 (evil-leader/set-key "n" 'next-error)
 (evil-leader/set-key "p" 'previous-error)
+(evil-leader/set-key "d" 'intero-goto-definition)
 
 ;; magit
 (package-install 'magit)

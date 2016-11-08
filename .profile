@@ -12,8 +12,10 @@ alias cdoc="cabal haddock --hoogle; cp dist/doc/html/`basename $PWD`/`basename $
 alias g='grep --colour -Rnif /dev/stdin src <<<'
 
 alias ga="git add"
+alias gap="git add -p"
 alias gs="git status"
-alias gc="git commit -a -m"
+alias gc="git commit"
+alias gca="git commit -a -m"
 alias gco="git checkout"
 alias gp="git push"
 alias gpu="git pull"
