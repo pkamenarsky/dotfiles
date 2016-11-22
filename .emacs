@@ -19,6 +19,15 @@
 (package-install 'avy)
 (require 'avy)
 
+;; ivy
+;; (package-install 'swiper)
+;; (package-install 'counsel)
+;; (require 'ivy)
+;; (ivy-mode 1)
+
+;; help
+(require 'helm-config)
+
 (global-set-key (kbd "M-g w") 'avy-goto-word-1)
 
 ;; ido
@@ -37,6 +46,8 @@
   '(progn
      (define-key evil-normal-state-map (kbd "C-\\") 'evil-window-vsplit)
      (define-key evil-normal-state-map (kbd "C-_") 'evil-window-split)
+
+     (define-key evil-normal-state-map (kbd "C-t") 'helm-projectile-find-file)
 
      (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
      (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
@@ -62,6 +73,10 @@
 ;; projectile
 (package-install 'projectile)
 (require 'projectile)
+
+(package-install 'helm-projectile)
+(require 'helm-projectile)
+(helm-projectile-on)
 
 ;; intero
 (package-install 'intero)
