@@ -65,6 +65,7 @@
 (evil-leader/set-key "n" 'next-error)
 (evil-leader/set-key "p" 'previous-error)
 (evil-leader/set-key "d" 'intero-goto-definition)
+(evil-leader/set-key "f" 'helm-etags-select)
 
 ;; magit
 (package-install 'magit)
@@ -87,3 +88,6 @@
 
 ;; haskell unicode
 (setq haskell-font-lock-symbols t)
+
+;; generate haskell tags on save
+(setq haskell-tags-on-save t)
