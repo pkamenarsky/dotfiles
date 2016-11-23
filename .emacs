@@ -12,6 +12,8 @@
 
 (set-default-font "Source Code Pro 13")
 
+(set-default 'truncate-lines t)
+
 ;; ?
 (put 'upcase-region 'disabled nil)
 
