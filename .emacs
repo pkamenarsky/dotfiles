@@ -43,6 +43,7 @@
 ;; (setq evil-search-module 'evil-search)
 (require 'evil)
 (evil-mode 1)
+(setq evil-esc-delay 0)
 
 (eval-after-load "evil"
   '(progn
