@@ -4,8 +4,6 @@
 
 (package-initialize)
 
-(menu-bar-mode -1)
-
 ;; zenburn theme
 (package-install 'zenburn-theme)
 (load-theme 'zenburn t)
@@ -92,3 +90,30 @@
 
 ;; generate haskell tags on save
 (setq haskell-tags-on-save t)
+
+(setq inhibit-splash-screen t)
+(setq inhibit-startup-message t)
+
+;; fullscreen
+(setq inhibit-splash-screen t)
+(setq inhibit-startup-message t)
+
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(toggle-frame-fullscreen)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (projectile evil zenburn-theme writeroom-mode swiper-helm magit intero helm-projectile focus evil-leader counsel avy))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
