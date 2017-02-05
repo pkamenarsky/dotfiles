@@ -4,10 +4,6 @@
 
 (package-initialize)
 
-;; zenburn theme
-(package-install 'zenburn-theme)
-(load-theme 'zenburn)
-
 (set-default-font "Source Code Pro 13")
 
 (set-default 'truncate-lines t)
@@ -65,6 +61,7 @@
 (evil-leader/set-key "n" 'next-error)
 (evil-leader/set-key "p" 'previous-error)
 (evil-leader/set-key "g" 'intero-goto-definition)
+(evil-leader/set-key "g" 'intero-info)
 (evil-leader/set-key "f" 'helm-etags-select)
 
 ;; magit
@@ -126,3 +123,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; zenburn theme
+(package-install 'zenburn-theme)
+(load-theme 'zenburn)
