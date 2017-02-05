@@ -6,7 +6,7 @@
 
 ;; zenburn theme
 (package-install 'zenburn-theme)
-(load-theme 'zenburn t)
+(load-theme 'zenburn)
 
 (set-default-font "Source Code Pro 13")
 
@@ -38,6 +38,7 @@
 ;; evil
 (package-install 'evil)
 (setq evil-want-C-u-scroll t)
+(setq evil-want-C-i-jump nil)
 ;; (setq evil-search-module 'evil-search)
 (require 'evil)
 (evil-mode 1)
@@ -63,7 +64,7 @@
 
 (evil-leader/set-key "n" 'next-error)
 (evil-leader/set-key "p" 'previous-error)
-(evil-leader/set-key "d" 'intero-goto-definition)
+(evil-leader/set-key "g" 'intero-goto-definition)
 (evil-leader/set-key "f" 'helm-etags-select)
 
 ;; magit
@@ -79,6 +80,11 @@
 (package-install 'helm-projectile)
 (require 'helm-projectile)
 (helm-projectile-on)
+
+;; org-bullets
+(package-install 'org-bullets)
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 ;; intero
 (package-install 'intero)
@@ -108,9 +114,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("9d91458c4ad7c74cf946bd97ad085c0f6a40c370ac0a1cbeb2e3879f15b40553" default)))
  '(package-selected-packages
    (quote
-    (projectile evil zenburn-theme writeroom-mode swiper-helm magit intero helm-projectile focus evil-leader counsel avy))))
+    (projectile evil zenburn-theme writeroom-mode swiper-helm solarized-theme org-bullets magit intero helm-projectile focus evil-leader counsel avy))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
