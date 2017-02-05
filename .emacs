@@ -61,7 +61,7 @@
 (evil-leader/set-key "n" 'next-error)
 (evil-leader/set-key "p" 'previous-error)
 (evil-leader/set-key "g" 'intero-goto-definition)
-(evil-leader/set-key "g" 'intero-info)
+(evil-leader/set-key "i" 'intero-info)
 (evil-leader/set-key "f" 'helm-etags-select)
 
 ;; magit
