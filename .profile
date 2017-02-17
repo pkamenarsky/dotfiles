@@ -45,6 +45,9 @@ set -o vi
 # /usr/local/bin
 export PATH=/usr/local/bin:$PATH
 
+# /usr/.local/bin
+export PATH=$HOME/.local/bin:$PATH
+
 ### Convert mov to gif
 movtogif() {
     ffmpeg -i "$1" -vf scale=800:-1 -r 10 -f image2pipe -vcodec ppm - |\

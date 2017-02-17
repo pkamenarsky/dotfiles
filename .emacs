@@ -11,26 +11,6 @@
 ;; ?
 (put 'upcase-region 'disabled nil)
 
-;; avy
-(package-install 'avy)
-(require 'avy)
-
-;; ivy
-;; (package-install 'swiper)
-;; (package-install 'counsel)
-;; (require 'ivy)
-;; (ivy-mode 1)
-
-;; help
-(require 'helm-config)
-
-(global-set-key (kbd "M-g w") 'avy-goto-word-1)
-
-;; ido
-;; (setq ido-enable-flex-matching t)
-;; (setq ido-everywhere t)
-;; (ido-mode 1)
-
 ;; evil
 (package-install 'evil)
 (setq evil-want-C-u-scroll t)
@@ -103,7 +83,7 @@
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)
-(scroll-bar-mode -1)
+;; (scroll-bar-mode -1)
 (toggle-frame-fullscreen)
 
 (custom-set-variables
