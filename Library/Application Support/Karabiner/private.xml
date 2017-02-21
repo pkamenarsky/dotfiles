@@ -15,6 +15,11 @@
     <url type="file">/Applications/Google Chrome.app</url>
   </vkopenurldef>
 
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_WhatsApp</name>
+    <url type="file">/Applications/WhatsApp.app</url>
+  </vkopenurldef>
+
   <item>
     <name>Mac</name>
     <item>
@@ -23,6 +28,7 @@
       <autogen>__KeyToKey__ KeyCode::C, ModifierFlag::COMMAND_L, ModifierFlag::CONTROL_L, KeyCode::VK_OPEN_URL_Term</autogen>
       <autogen>__KeyToKey__ KeyCode::F, ModifierFlag::COMMAND_L, ModifierFlag::CONTROL_L, KeyCode::VK_OPEN_URL_Finder</autogen>
       <autogen>__KeyToKey__ KeyCode::W, ModifierFlag::COMMAND_L, ModifierFlag::CONTROL_L, KeyCode::VK_OPEN_URL_Web</autogen>
+      <autogen>__KeyToKey__ KeyCode::A, ModifierFlag::COMMAND_L, ModifierFlag::CONTROL_L, KeyCode::VK_OPEN_URL_WhatsApp</autogen>
     </item>
   </item>
 </root>
