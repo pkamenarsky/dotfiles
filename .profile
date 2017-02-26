@@ -15,6 +15,8 @@ alias gp="git push"
 alias gpu="git pull"
 alias gl="git log --pretty=format:"%h%x09%an%x09%ad%x09%s%d""
 
+alias git-todos-hs="git grep --line-number -e TODO -e FIXME -e NOTE -- '*.hs'"
+
 alias h="hg"
 alias ha="hg add"
 alias hs="hg status"
