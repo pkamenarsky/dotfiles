@@ -44,6 +44,9 @@
 (evil-leader/set-key "i" 'intero-info)
 (evil-leader/set-key "f" 'helm-etags-select)
 
+;; company-mode
+(package-install 'company)
+
 ;; magit
 (package-install 'magit)
 
@@ -69,6 +72,7 @@
 
 (package-install 'psc-ide)
 (require 'psc-ide)
+(customize-set-variable 'psc-ide-rebuild-on-save t)
 (add-hook 'purescript-mode-hook
   (lambda ()
     (psc-ide-mode)
@@ -109,7 +113,8 @@
     ("f5512c02e0a6887e987a816918b7a684d558716262ac7ee2dd0437ab913eaec6" "9d91458c4ad7c74cf946bd97ad085c0f6a40c370ac0a1cbeb2e3879f15b40553" default)))
  '(package-selected-packages
    (quote
-    (projectile evil zenburn-theme writeroom-mode swiper-helm solarized-theme org-bullets magit intero helm-projectile focus evil-leader counsel avy))))
+    (projectile evil zenburn-theme writeroom-mode swiper-helm solarized-theme org-bullets magit intero helm-projectile focus evil-leader counsel avy)))
+ '(psc-ide-rebuild-on-save t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
