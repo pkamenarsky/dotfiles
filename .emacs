@@ -11,6 +11,9 @@
 ;; ?
 (put 'upcase-region 'disabled nil)
 
+;; no tabs
+(setq-default indent-tabs-mode nil)
+
 ;; evil
 (package-install 'evil)
 (setq evil-want-C-u-scroll t)
@@ -66,6 +69,9 @@
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
+;; javascript
+(setq js-indent-level 2)
+
 ;; purescript
 (package-install 'purescript-mode)
 (require 'purescript-mode)
@@ -113,7 +119,7 @@
     ("f5512c02e0a6887e987a816918b7a684d558716262ac7ee2dd0437ab913eaec6" "9d91458c4ad7c74cf946bd97ad085c0f6a40c370ac0a1cbeb2e3879f15b40553" default)))
  '(package-selected-packages
    (quote
-    (projectile evil zenburn-theme writeroom-mode swiper-helm solarized-theme org-bullets magit intero helm-projectile focus evil-leader counsel avy)))
+    (psc-ide purescript-mode company projectile evil zenburn-theme writeroom-mode swiper-helm solarized-theme org-bullets magit intero helm-projectile focus evil-leader counsel avy)))
  '(psc-ide-rebuild-on-save t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
