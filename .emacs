@@ -8,11 +8,24 @@
 
 (set-default 'truncate-lines t)
 
+;; autosave & backup
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
+
 ;; ?
 (put 'upcase-region 'disabled nil)
 
 ;; no tabs
 (setq-default indent-tabs-mode nil)
+
+;; autosave
+(package-install 'real-auto-save)
+(require 'real-auto-save)
+(add-hook 'prog-mode-hook 'real-auto-save-mode)
+
+(setq real-auto-save-interval 1)
 
 ;; evil
 (package-install 'evil)
@@ -70,7 +83,35 @@
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 ;; javascript
+(package-install 'tide)
+(require 'tide)
+
+(defun setup-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  ;; company is an optional dependency. You have to
+  ;; install it separately via package-install
+  ;; `M-x package-install [ret] company`
+  (company-mode +1))
+
+;; aligns annotation to the right hand side
+(setq company-tooltip-align-annotations t)
+
+;; formats the buffer before saving
+;; (add-hook 'before-save-hook 'tide-format-before-save)
+
+(add-hook 'typescript-mode-hook #'setup-tide-mode)
+
 (setq js-indent-level 2)
+
+;; idris
+(package-install 'idris-mode)
+(require 'idris-mode)
+(idris-define-evil-keys)
 
 ;; purescript
 (package-install 'purescript-mode)
@@ -117,9 +158,10 @@
  '(custom-safe-themes
    (quote
     ("f5512c02e0a6887e987a816918b7a684d558716262ac7ee2dd0437ab913eaec6" "9d91458c4ad7c74cf946bd97ad085c0f6a40c370ac0a1cbeb2e3879f15b40553" default)))
+ '(flycheck-javascript-flow-args nil)
  '(package-selected-packages
    (quote
-    (psc-ide purescript-mode company projectile evil zenburn-theme writeroom-mode swiper-helm solarized-theme org-bullets magit intero helm-projectile focus evil-leader counsel avy)))
+    (flow-mode flycheck-flow psc-ide purescript-mode company projectile evil zenburn-theme writeroom-mode swiper-helm solarized-theme org-bullets magit intero helm-projectile focus evil-leader counsel avy)))
  '(psc-ide-rebuild-on-save t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
