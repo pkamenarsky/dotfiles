@@ -66,6 +66,8 @@
 ;; magit
 (package-install 'magit)
 
+(package-install 'langtool)
+
 ;; writeroom-mode
 (package-install 'writeroom-mode)
 
@@ -81,6 +83,18 @@
 (package-install 'org-bullets)
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
+(add-hook 'org-mode-hook (lambda ()
+  (progn
+    ;; Snipped
+    (auto-fill-mode t)
+
+    ;; Spelling
+    (flyspell-mode t)
+
+    ;; Grammar
+    (require 'langtool)
+    (setq langtool-java-classpath "/usr/local/share/languagetool/*"))))
 
 ;; javascript
 (package-install 'tide)
@@ -157,7 +171,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("f5512c02e0a6887e987a816918b7a684d558716262ac7ee2dd0437ab913eaec6" "9d91458c4ad7c74cf946bd97ad085c0f6a40c370ac0a1cbeb2e3879f15b40553" default)))
+    ("67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" "f5512c02e0a6887e987a816918b7a684d558716262ac7ee2dd0437ab913eaec6" "9d91458c4ad7c74cf946bd97ad085c0f6a40c370ac0a1cbeb2e3879f15b40553" default)))
  '(flycheck-javascript-flow-args nil)
  '(package-selected-packages
    (quote
