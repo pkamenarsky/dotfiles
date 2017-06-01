@@ -87,7 +87,7 @@
 (add-hook 'org-mode-hook (lambda ()
   (progn
     ;; Snipped
-    (auto-fill-mode t)
+    ;; (auto-fill-mode t)
 
     ;; Spelling
     (flyspell-mode t)
