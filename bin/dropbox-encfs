@@ -1,2 +1,2 @@
 export ENCFS6_CONFIG="/Users/phil/Documents/encfs/key.xml"
-encfs ~/Dropbox/Vault ~/Documents/Vault --forcedecode --extpass="cat ~/Documents/encfs/pass"
+encfs ~/Google\ Drive/Vault ~/Documents/Vault --forcedecode --extpass="cat ~/Documents/encfs/pass"
