@@ -56,6 +56,4 @@ movtogif() {
     convert -delay 5 -layers Optimize -loop 0 - "${1%.*}.gif"
 }
 
-# gems
-export GEM_HOME=~/.gem
-export GEM_PATH=~/.gem
+eval "$(rbenv init -)"

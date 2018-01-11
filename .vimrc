@@ -159,7 +159,7 @@ autocmd CursorHold * exe printf('match CursorWord /\V\<%s\>/', escape(expand('<c
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['purescript'],'passive_filetypes': [] }
 
 " Autosave after updatetime in normal mode
-au CursorHold * :update
+" au CursorHold * :update
 
 " Yankring
 nnoremap <silent> <F3> :YRShow<CR>

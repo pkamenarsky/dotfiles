@@ -1,6 +1,39 @@
-call plug#begin()
-Plug 'cloudhead/neovim-ghcid'
-call plug#end()
+"NeoBundle Scripts-----------------------------
+if has('vim_starting')
+  " Required:
+  set runtimepath+=/Users/phil/.config/nvim/bundle/neobundle.vim/
+endif
+
+" Required:
+call neobundle#begin(expand('/Users/phil/.config/nvim/bundle'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" Add or remove your Bundles here:
+NeoBundle 'vim-syntastic/syntastic'
+NeoBundle 'raichoo/purescript-vim'
+NeoBundle 'frigoeu/psc-ide-vim'
+" NeoBundle 'Shougo/neosnippet.vim'
+" NeoBundle 'Shougo/neosnippet-snippets'
+" NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'ctrlpvim/ctrlp.vim'
+" NeoBundle 'flazz/vim-colorschemes'
+
+" You can specify revision/branch/tag.
+NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
+
+" Required:
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+"End NeoBundle Scripts-------------------------
 
 " Basic settigs
 filetype plugin indent on
@@ -92,9 +125,9 @@ noremap gV `[v`]
 " Stop that stupid window from popping up
 map q: :q
 
-nnoremap <Leader>i :tabnext<CR>
-nnoremap <Leader>o :tabprev<CR>
-nnoremap <Leader>t :tabnew<CR>
+" nnoremap <Leader>i :tabnext<CR>
+" nnoremap <Leader>o :tabprev<CR>
+" nnoremap <Leader>t :tabnew<CR>
 
 " Quickfix
 map <F10> ;ccl<CR>
@@ -124,7 +157,7 @@ map <C-\> ;vsplit<CR>
 map <C-_> ;split<CR>
 
 " Autosave after updatetime in normal mode
-au CursorHold * :update
+" au CursorHold * :update
 
 " Haskell
 au filetype haskell inoremap ^OR <C-v>u2228
@@ -171,3 +204,16 @@ command! PprintShow2 %!hsformat
 
 " match parens correctly
 au filetype haskell setlocal cpoptions+=M
+
+" Purescript
+nm <buffer> <silent> <leader>t :<C-U>call PSCIDEtype(PSCIDEgetKeyword(), v:true)<CR>
+nm <buffer> <silent> <leader>T :<C-U>call PSCIDEaddTypeAnnotation(matchstr(getline(line(".")), '^\s*\zs\k\+\ze'))<CR>
+nm <buffer> <silent> <leader>s :<C-U>call PSCIDEapplySuggestion()<CR>
+nm <buffer> <silent> <leader>a :<C-U>call PSCIDEaddTypeAnnotation()<CR>
+nm <buffer> <silent> <leader>i :<C-U>call PSCIDEimportIdentifier(PSCIDEgetKeyword())<CR>
+nm <buffer> <silent> <leader>r :<C-U>call PSCIDEload()<CR>
+nm <buffer> <silent> <leader>p :<C-U>call PSCIDEpursuit(PSCIDEgetKeyword())<CR>
+nm <buffer> <silent> <leader>C :<C-U>call PSCIDEcaseSplit("!")<CR>
+nm <buffer> <silent> <leader>f :<C-U>call PSCIDEaddClause("")<CR>
+nm <buffer> <silent> <leader>qa :<C-U>call PSCIDEaddImportQualifications()<CR>
+nm <buffer> <silent> ]d :<C-U>call PSCIDEgoToDefinition("", PSCIDEgetKeyword())<CR>

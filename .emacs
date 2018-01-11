@@ -27,6 +27,107 @@
 
 (setq real-auto-save-interval 1)
 
+;; copy & paste
+(defun copy-from-osx ()
+  (shell-command-to-string "pbpaste"))
+
+(defun paste-to-osx (text &optional push)
+  (let ((process-connection-type nil))
+    (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
+      (process-send-string proc text)
+      (process-send-eof proc))))
+
+;; rainbow-delimiters
+(package-install 'rainbow-delimiters)
+(require 'rainbow-delimiters)
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
+;; (setq interprogram-cut-function 'paste-to-osx)
+;; (setq interprogram-paste-function 'copy-from-osx)
+
+;; modalka
+;; (package-install 'modalka)
+;; (global-set-key (kbd ";") #'modalka-mode)
+;;
+;; (modalka-define-kbd "SPC" "C-SPC")
+;; ;; '
+;; (modalka-define-kbd "," "C-,")
+;; ;; -
+;; (modalka-define-kbd "/" "M-.")
+;; (modalka-define-kbd "." "C-.")
+;; (modalka-define-kbd ":" "M-;")
+;; (modalka-define-kbd ";" "C-;")
+;; (modalka-define-kbd "?" "M-,")
+;;
+;; (modalka-define-kbd "0" "C-0")
+;; (modalka-define-kbd "1" "C-1")
+;; (modalka-define-kbd "2" "C-2")
+;; (modalka-define-kbd "3" "C-3")
+;; (modalka-define-kbd "4" "C-4")
+;; (modalka-define-kbd "5" "C-5")
+;; (modalka-define-kbd "6" "C-6")
+;; (modalka-define-kbd "7" "C-7")
+;; (modalka-define-kbd "8" "C-8")
+;; (modalka-define-kbd "9" "C-9")
+;;
+;; (modalka-define-kbd "a" "C-a")
+;; (modalka-define-kbd "b" "C-b")
+;; (modalka-define-kbd "c c" "C-c C-c")
+;; (modalka-define-kbd "c k" "C-c C-k")
+;; (modalka-define-kbd "c v" "C-c C-v")
+;; (modalka-define-kbd "d" "C-d")
+;; (modalka-define-kbd "e" "C-e")
+;; (modalka-define-kbd "f" "C-f")
+;; (modalka-define-kbd "g" "C-g")
+;; (modalka-define-kbd "h" "M-h")
+;; (modalka-define-kbd "i" "C-i")
+;; (modalka-define-kbd "j" "M-j")
+;; (modalka-define-kbd "k" "C-k")
+;; (modalka-define-kbd "l" "C-l")
+;; (modalka-define-kbd "m" "C-m")
+;; (modalka-define-kbd "n" "C-n")
+;; (modalka-define-kbd "o" "C-o")
+;; (modalka-define-kbd "p" "C-p")
+;; (modalka-define-kbd "q" "M-q")
+;; (modalka-define-kbd "r" "C-r")
+;; (modalka-define-kbd "s" "C-s")
+;; (modalka-define-kbd "t" "C-t")
+;; (modalka-define-kbd "u" "C-u")
+;; (modalka-define-kbd "v" "C-v")
+;; (modalka-define-kbd "w" "C-w")
+;; (modalka-define-kbd "x ;" "C-x C-;")
+;; (modalka-define-kbd "x e" "C-x C-e")
+;; (modalka-define-kbd "x o" "C-x C-o")
+;; (modalka-define-kbd "y" "C-y")
+;; (modalka-define-kbd "z" "M-z")
+;;
+;; (modalka-define-kbd "A" "M-SPC")
+;; (modalka-define-kbd "B" "M-b")
+;; (modalka-define-kbd "C" "M-c")
+;; (modalka-define-kbd "D" "M-d")
+;; (modalka-define-kbd "E" "M-e")
+;; (modalka-define-kbd "F" "M-f")
+;; (modalka-define-kbd "G" "C-`")
+;; (modalka-define-kbd "H" "M-H")
+;;
+;; ;; J
+;; (modalka-define-kbd "K" "M-k")
+;; (modalka-define-kbd "L" "M-l")
+;; (modalka-define-kbd "M" "M-m")
+;; (modalka-define-kbd "N" "M-n")
+;; (modalka-define-kbd "O" "M-o")
+;; (modalka-define-kbd "P" "M-p")
+;;
+;; (modalka-define-kbd "R" "M-r")
+;; (modalka-define-kbd "S" "M-S")
+;; (modalka-define-kbd "T" "M-t")
+;; (modalka-define-kbd "U" "M-u")
+;; (modalka-define-kbd "V" "M-v")
+;; (modalka-define-kbd "W" "M-w")
+;; ;; X
+;; (modalka-define-kbd "Y" "M-y")
+;; (modalka-define-kbd "Z" "C-z")
+
 ;; evil
 (package-install 'evil)
 (setq evil-want-C-u-scroll t)
@@ -38,6 +139,10 @@
 
 (eval-after-load "evil"
   '(progn
+     (define-key evil-motion-state-map ";" 'evil-ex)
+     (define-key evil-motion-state-map ":" 'evil-find-char)
+
+     (define-key evil-insert-state-map (kbd "C-c") 'evil-normal-state)
      (define-key evil-normal-state-map (kbd "C-\\") 'evil-window-vsplit)
      (define-key evil-normal-state-map (kbd "C-_") 'evil-window-split)
 
@@ -59,6 +164,7 @@
 (evil-leader/set-key "g" 'intero-goto-definition)
 (evil-leader/set-key "i" 'intero-info)
 (evil-leader/set-key "f" 'helm-etags-select)
+(evil-leader/set-key "m" 'magit-status)
 
 ;; company-mode
 (package-install 'company)
@@ -96,6 +202,15 @@
     (require 'langtool)
     (setq langtool-java-classpath "/usr/local/share/languagetool/*"))))
 
+(add-hook 'text-mode-hook (lambda ()
+  (progn
+    ;; Spelling
+    (flyspell-mode t)
+
+    ;; Grammar
+    (require 'langtool)
+    (setq langtool-java-classpath "/usr/local/share/languagetool/*"))))
+
 ;; javascript
 (package-install 'tide)
 (require 'tide)
@@ -122,6 +237,9 @@
 
 (setq js-indent-level 2)
 
+;; css
+(setq css-indent-offset 2)
+
 ;; idris
 (package-install 'idris-mode)
 (require 'idris-mode)
@@ -140,6 +258,14 @@
     (company-mode)
     (flycheck-mode)
     (turn-on-purescript-indentation)))
+
+(define-abbrev-table 'global-abbrev-table '(
+    ("xxx" "×")
+    ("aaa" "∀")
+    ("ddd" "Δ")
+    ("ggg" "Γ")
+    ("ooo" "○")
+    ))
 
 ;; intero
 (package-install 'intero)
@@ -171,12 +297,12 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" "f5512c02e0a6887e987a816918b7a684d558716262ac7ee2dd0437ab913eaec6" "9d91458c4ad7c74cf946bd97ad085c0f6a40c370ac0a1cbeb2e3879f15b40553" default)))
- '(flycheck-javascript-flow-args nil)
+    ("5e52ce58f51827619d27131be3e3936593c9c7f9f9f9d6b33227be6331bf9881" "2a739405edf418b8581dcd176aaf695d319f99e3488224a3c495cb0f9fd814e3" "cdfc5c44f19211cfff5994221078d7d5549eeb9feda4f595a2fd8ca40467776c" "67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" "f5512c02e0a6887e987a816918b7a684d558716262ac7ee2dd0437ab913eaec6" "9d91458c4ad7c74cf946bd97ad085c0f6a40c370ac0a1cbeb2e3879f15b40553" default)))
  '(package-selected-packages
    (quote
-    (flow-mode flycheck-flow psc-ide purescript-mode company projectile evil zenburn-theme writeroom-mode swiper-helm solarized-theme org-bullets magit intero helm-projectile focus evil-leader counsel avy)))
- '(psc-ide-rebuild-on-save t))
+    (rainbow-delimiters idris-mode tide langtool real-auto-save psc-ide purescript-mode company projectile evil zenburn-theme writeroom-mode swiper-helm solarized-theme org-bullets magit intero helm-projectile focus evil-leader counsel avy)))
+ '(psc-ide-rebuild-on-save t)
+ '(psc-ide-use-purs nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
