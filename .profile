@@ -57,5 +57,3 @@ movtogif() {
 }
 
 eval "$(rbenv init -)"
-
-export PATH=/Users/phil/.local/bin/luna-studio:$PATH
