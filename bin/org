@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [[ `pwd` =~ .*/(.*) ]]; then
+  home=`cd ~; pwd`
+  tdir="${home}/Google Drive/org"
+
+  mkdir -p "${tdir}"
+
+  org="${tdir}/${BASH_REMATCH[1]}.org"
+
+  touch "${org}"
+  emacs "${org}"
+fi
+
