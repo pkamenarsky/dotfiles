@@ -167,11 +167,27 @@
 (evil-leader/set-key "m" 'magit-status)
 
 ;;
+(package-install 'highlight-indentation)
+(require 'highlight-indentation)
+
+(set-face-background 'highlight-indentation-face "#4a4a4a")
+(set-face-background 'highlight-indentation-current-column-face "#4a4a4a")
+
+(setq whitespace-style '(face spaces empty space-mark))
+(setq whitespace-display-mappings '((space-mark 32 [8231])))
+(setq whitespace-line-column 80)
+;; (global-whitespace-mode t)
+
+;;
 (package-install 'markdown-mode)
 (require 'markdown-mode)
 
 ;; company-mode
 (package-install 'company)
+
+(with-eval-after-load 'company
+  (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
+  (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort))
 
 ;; magit
 (package-install 'magit)
@@ -216,6 +232,31 @@
     (setq langtool-java-classpath "/usr/local/share/languagetool/*"))))
 
 ;; javascript
+(package-install 'js2-mode)
+(require 'js2-mode)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+
+;; javascript better imenu
+(add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
+
+;; (package-install 'js2-refactor)
+;; (require 'js2-refactor)
+
+(package-install 'xref-js2)
+(require 'xref-js2)
+
+;; (add-hook 'js2-mode-hook #'js2-refactor-mode)
+;; (js2r-add-keybindings-with-prefix "C-c C-r")
+;; (define-key js2-mode-map (kbd "C-k") #'js2r-kill)
+
+;; js-mode (which js2 is based on) binds "M-." which conflicts with xref, so
+;; unbind it.
+(define-key js-mode-map (kbd "M-.") nil)
+
+(add-hook 'js2-mode-hook (lambda ()
+  (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
+
+;; typescript
 (package-install 'tide)
 (require 'tide)
 
@@ -271,16 +312,24 @@
     ("ooo" "○")
     ))
 
+;; dante
+(package-install 'dante)
+;; (add-hook 'haskell-mode-hook 'dante-mode)
+;; (add-hook 'haskell-mode-hook 'flycheck-mode)
+;; (evil-leader/set-key "t" 'dante-type-at)
+;; (evil-leader/set-key "g" 'intero-goto-definition)
+
 ;; intero
 (package-install 'intero)
-(add-hook 'haskell-mode-hook 'intero-mode)
+;; (add-hook 'haskell-mode-hook 'intero-mode)
 (evil-leader/set-key "t" 'intero-type-at)
+(evil-leader/set-key "g" 'intero-goto-definition)
 
 ;; haskell unicode
 (setq haskell-font-lock-symbols t)
 
 ;; generate haskell tags on save
-(setq haskell-tags-on-save t)
+;; (setq haskell-tags-on-save t)
 
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
@@ -301,19 +350,22 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("5e52ce58f51827619d27131be3e3936593c9c7f9f9f9d6b33227be6331bf9881" "2a739405edf418b8581dcd176aaf695d319f99e3488224a3c495cb0f9fd814e3" "cdfc5c44f19211cfff5994221078d7d5549eeb9feda4f595a2fd8ca40467776c" "67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" "f5512c02e0a6887e987a816918b7a684d558716262ac7ee2dd0437ab913eaec6" "9d91458c4ad7c74cf946bd97ad085c0f6a40c370ac0a1cbeb2e3879f15b40553" default)))
+    ("e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" "5e52ce58f51827619d27131be3e3936593c9c7f9f9f9d6b33227be6331bf9881" "2a739405edf418b8581dcd176aaf695d319f99e3488224a3c495cb0f9fd814e3" "cdfc5c44f19211cfff5994221078d7d5549eeb9feda4f595a2fd8ca40467776c" "67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" "f5512c02e0a6887e987a816918b7a684d558716262ac7ee2dd0437ab913eaec6" "9d91458c4ad7c74cf946bd97ad085c0f6a40c370ac0a1cbeb2e3879f15b40553" default)))
  '(package-selected-packages
    (quote
-    (markdown-mode rainbow-delimiters idris-mode tide langtool real-auto-save psc-ide purescript-mode company projectile evil zenburn-theme writeroom-mode swiper-helm solarized-theme org-bullets magit intero helm-projectile focus evil-leader counsel avy)))
+    (highlight-indentation xref-js2 js2-mode highlight-indent-guides markdown-mode rainbow-delimiters idris-mode tide langtool real-auto-save psc-ide purescript-mode company projectile evil zenburn-theme writeroom-mode swiper-helm solarized-theme org-bullets magit intero helm-projectile focus evil-leader counsel avy)))
  '(psc-ide-rebuild-on-save t)
  '(psc-ide-use-purs nil))
+
+;; zenburn theme
+(package-install 'zenburn-theme)
+;; (setq zenburn-override-colors-alist
+;;       '(("zenburn-bg" . nil)))
+(load-theme 'zenburn)
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
-
-;; zenburn theme
-(package-install 'zenburn-theme)
-(load-theme 'zenburn)
+ '(whitespace-space ((t (:bold f :background nil :foreground "#4a4a4a")))))

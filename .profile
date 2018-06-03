@@ -50,6 +50,9 @@ export PATH=/usr/local/bin:$PATH
 # /usr/.local/bin
 export PATH=$HOME/.local/bin:$PATH
 
+export JAVA_HOME=(/usr/libexec/java_home)
+export ANDROID_HOME=/usr/local/share/android-sdk
+
 ### Convert mov to gif
 movtogif() {
     ffmpeg -i "$1" -vf scale=800:-1 -r 10 -f image2pipe -vcodec ppm - |\
