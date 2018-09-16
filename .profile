@@ -42,13 +42,14 @@ export PATH=$HOME/bin:$PATH
 export EDITOR=vim
 export VISUAL=vim
 
-set -o vi
-
 # /usr/local/bin
 export PATH=/usr/local/bin:$PATH
 
 # /usr/.local/bin
 export PATH=$HOME/.local/bin:$PATH
+
+# Purescript/psvm
+export PATH=$HOME/.psvm/current/bin:$PATH
 
 export JAVA_HOME=(/usr/libexec/java_home)
 export ANDROID_HOME=/usr/local/share/android-sdk
@@ -59,4 +60,3 @@ movtogif() {
     convert -delay 5 -layers Optimize -loop 0 - "${1%.*}.gif"
 }
 
-eval "$(rbenv init -)"
