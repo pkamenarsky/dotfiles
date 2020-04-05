@@ -23,7 +23,10 @@
 ;; autosave
 (package-install 'real-auto-save)
 (require 'real-auto-save)
+
 (add-hook 'prog-mode-hook 'real-auto-save-mode)
+(add-hook 'css-mode-hook 'real-auto-save-mode)
+(add-hook 'org-mode-mode-hook 'real-auto-save-mode)
 
 (setq real-auto-save-interval 1)
 
@@ -232,9 +235,9 @@
     (setq langtool-java-classpath "/usr/local/share/languagetool/*"))))
 
 ;; javascript
-(package-install 'js2-mode)
-(require 'js2-mode)
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(package-install 'rjsx-mode)
+(require 'rjsx-mode)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
 
 ;; javascript better imenu
 (add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
@@ -280,7 +283,29 @@
 
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
 
+;; TSX
+(package-install 'web-mode)
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+(add-hook 'web-mode-hook
+          (lambda ()
+            (when (string-equal "tsx" (file-name-extension buffer-file-name))
+              (setup-tide-mode))))
+;; enable typescript-tslint checker
+(flycheck-add-mode 'typescript-tslint 'web-mode)
+
+(setq typescript-indent-level
+  (or (plist-get (tide-tsfmt-options) ':indentSize) 2))
+
+(setq js2-basic-offset 2)
 (setq js-indent-level 2)
+(setq typescript-indent-level 2)
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-code-indent-offset 2)
+(setq web-mode-indent-style 2)
+(setq web-mode-enable-current-element-highlight t)
+(setq web-mode-enable-current-column-highlight t)
 
 ;; css
 (setq css-indent-offset 2)
@@ -304,6 +329,8 @@
     (flycheck-mode)
     (turn-on-purescript-indentation)))
 
+(setq psc-ide-use-npm-bin t)
+
 (define-abbrev-table 'global-abbrev-table '(
     ("xxx" "×")
     ("aaa" "∀")
@@ -314,25 +341,42 @@
 
 ;; dante
 (package-install 'dante)
-;; (add-hook 'haskell-mode-hook 'dante-mode)
-;; (add-hook 'haskell-mode-hook 'flycheck-mode)
-;; (evil-leader/set-key "t" 'dante-type-at)
+(add-hook 'haskell-mode-hook 'dante-mode)
+(add-hook 'haskell-mode-hook 'flycheck-mode)
+(evil-leader/set-key "t" 'dante-type-at)
 ;; (evil-leader/set-key "g" 'intero-goto-definition)
 
 ;; intero
 (package-install 'intero)
 ;; (add-hook 'haskell-mode-hook 'intero-mode)
-(evil-leader/set-key "t" 'intero-type-at)
-(evil-leader/set-key "g" 'intero-goto-definition)
+;; (evil-leader/set-key "t" 'intero-type-at)
+;; (evil-leader/set-key "g" 'intero-goto-definition)
 
 ;; haskell unicode
-(setq haskell-font-lock-symbols t)
+;; (setq haskell-font-lock-symbols t)
 
 ;; generate haskell tags on save
 ;; (setq haskell-tags-on-save t)
 
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
+
+;; clojure
+(package-install 'cider)
+(require 'cider)
+
+(package-install 'clojure-mode)
+(require 'clojure-mode)
+
+(package-install 'smartparens)
+(require 'smartparens-config)
+
+(package-install 'aggressive-indent)
+(require 'aggressive-indent)
+
+(add-hook 'clojure-mode-hook #'smartparens-strict-mode)
+(add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'clojure-mode-hook #'aggressive-indent-mode)
 
 ;; fullscreen
 (setq inhibit-splash-screen t)
@@ -350,11 +394,12 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("0c32e4f0789f567a560be625f239ee9ec651e524e46a4708eb4aba3b9cdc89c5" "e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" "5e52ce58f51827619d27131be3e3936593c9c7f9f9f9d6b33227be6331bf9881" "2a739405edf418b8581dcd176aaf695d319f99e3488224a3c495cb0f9fd814e3" "cdfc5c44f19211cfff5994221078d7d5549eeb9feda4f595a2fd8ca40467776c" "67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" "f5512c02e0a6887e987a816918b7a684d558716262ac7ee2dd0437ab913eaec6" "9d91458c4ad7c74cf946bd97ad085c0f6a40c370ac0a1cbeb2e3879f15b40553" default)))
+    ("76c5b2592c62f6b48923c00f97f74bcb7ddb741618283bdb2be35f3c0e1030e3" "0c9f63c9d90d0d135935392873cd016cc1767638de92841a5b277481f1ec1f4a" "ec5f697561eaf87b1d3b087dd28e61a2fc9860e4c862ea8e6b0b77bd4967d0ba" "0c32e4f0789f567a560be625f239ee9ec651e524e46a4708eb4aba3b9cdc89c5" "e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" "5e52ce58f51827619d27131be3e3936593c9c7f9f9f9d6b33227be6331bf9881" "2a739405edf418b8581dcd176aaf695d319f99e3488224a3c495cb0f9fd814e3" "cdfc5c44f19211cfff5994221078d7d5549eeb9feda4f595a2fd8ca40467776c" "67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" "f5512c02e0a6887e987a816918b7a684d558716262ac7ee2dd0437ab913eaec6" "9d91458c4ad7c74cf946bd97ad085c0f6a40c370ac0a1cbeb2e3879f15b40553" default)))
  '(package-selected-packages
    (quote
-    (highlight-indentation xref-js2 js2-mode highlight-indent-guides markdown-mode rainbow-delimiters idris-mode tide langtool real-auto-save psc-ide purescript-mode company projectile evil zenburn-theme writeroom-mode swiper-helm solarized-theme org-bullets magit intero helm-projectile focus evil-leader counsel avy)))
- '(psc-ide-rebuild-on-save t))
+    (aggressive-indent smartparens clojure-mode cider dante web-mode rjsx-mode highlight-indentation xref-js2 js2-mode highlight-indent-guides markdown-mode rainbow-delimiters idris-mode tide langtool real-auto-save psc-ide purescript-mode company projectile evil zenburn-theme writeroom-mode swiper-helm solarized-theme org-bullets magit intero helm-projectile focus evil-leader counsel avy)))
+ '(psc-ide-rebuild-on-save t)
+ '(safe-local-variable-values (quote ((dante-methods stack)))))
 
 ;; zenburn theme
 (package-install 'zenburn-theme)

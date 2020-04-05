@@ -1,3 +1,2 @@
 #!/bin/sh
-export ENCFS6_CONFIG="/Users/phil/Documents/encfs/key.xml"
-encfs ~/Google\ Drive/Vault ~/Documents/Vault --forcedecode --extpass="cat ~/Documents/encfs/pass"
+ENCFS6_CONFIG="/Users/phil/Documents/encfs/key.xml" encfs /Users/phil/Library/Mobile\ Documents/com~apple~CloudDocs/Vault /Users/phil/Documents/Vault --forcedecode --extpass="cat ~/Documents/encfs/pass"
